@@ -11,7 +11,19 @@ router.get('/',function(request,response){
             console.log(result);
             response.json(result);
         }
-    })
-})
+    });
+});
+
+router.get('/:id',function(request,response){
+    card.getCardPIN(request.params.id,function(err, result){
+        if(err){
+            response.send(err);
+            console.log("error");
+        } else {
+            console.log(result);
+            response.json(result[0]);
+        }
+    });
+});
 
 module.exports=router;
