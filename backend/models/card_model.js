@@ -4,14 +4,23 @@ const db=require('../database');
 
 const card={
     getAllCard(callback){
-        return db.query('SELECT cardnumber, cardtype FROM card',callback);
+        return db.query('SELECT * FROM card',callback);
     },
-    getOneCard(callback){
-        return db.query('SELECT cardnumber FROM card WHERE',callback);
+    getOneCard(id,callback){
+        return db.query('SELECT * FROM card WHERE cardnumber=?',id,callback);
     },
-    getCardPIN(id, callback){
-        return db.query("SELECT cardpin FROM card INNER JOIN cardtype on card.cardnumber=cardtype.cardnumber WHERE idaccount=?",[id],callback);
+    addCard(newCard,callback){
+        return db.query('INSERT INTO card(cardpin,cardtype,cardnumber) VALUES(?,?,?)',[newCard.cardpin,newCard.cardtype,newCard.cardnumber],callback);
+    },
+    updateCard(id,updatecard,callback){
+        return db.query('UPDATE card SET cardpin=?, cardtype=? WHERE cardnumber=?',[updatecard.cardpin,updatecard.cardtype,id],callback);
+    },
+    deleteCard(id,callback){
+        return db.query('DELETE FROM card WHERE cardnumber=?',[id],callback);
     }
+
+
 }
 
 module.exports=card;
+
