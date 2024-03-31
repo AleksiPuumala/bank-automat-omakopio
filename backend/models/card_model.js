@@ -20,6 +20,9 @@ const card={
     },
     deleteCard(id,callback){
         return db.query('DELETE FROM card WHERE cardnumber=?',[id],callback);
+    },
+    login(cardnumber,callback){
+        return db.query('SELECT cardpin FROM card WHERE cardnumber=?',[cardnumber],callback);
     }
 
 
