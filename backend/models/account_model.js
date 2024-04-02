@@ -10,7 +10,7 @@ const account={
 
     },
      addOneAccount(newaccount,callback){
-        return db.query("INSERT INTO account(idaccount, balance, creditlimit) VALUES(?,?,?)"[newaccount.idaccount, newaccount.balance, newaccount.creditlimit],callback)
+        return db.query("INSERT INTO account(idaccount, balance, creditlimit) VALUES(?,'?','?')"[newaccount.idaccount, newaccount.balance, newaccount.creditlimit],callback)
      },
      updateOneAccount(id,updateaccount,callback){
         return db.query("UPDATE account SET idaccount=?, balance=?, creditlimit=? "[updateaccount.idaccount,updateaccount.balance,updateaccount.creditlimit],callback)

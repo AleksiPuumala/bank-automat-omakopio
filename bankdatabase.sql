@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `bank_automat` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bank_automat`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank_automat
@@ -25,11 +23,11 @@ DROP TABLE IF EXISTS `account`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `account` (
-  `idaccount` int NOT NULL,
+  `idaccount` int NOT NULL AUTO_INCREMENT,
   `balance` decimal(10,2) NOT NULL,
   `creditlimit` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idaccount`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,6 +36,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
+INSERT INTO `account` VALUES (1,20.00,50.00),(2,25.00,55.00);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -62,6 +61,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
+INSERT INTO `card` VALUES ('$2a$10$lBj.JuN5jS.JiceH1qXWoemum8uAQjmyB7gCWoE2YO35ZaMMFlHJG','credit','1234');
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -73,7 +73,7 @@ DROP TABLE IF EXISTS `cardtype`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `cardtype` (
-  `idcard` int NOT NULL,
+  `idcard` int NOT NULL AUTO_INCREMENT,
   `idaccount` int NOT NULL,
   `cardnumber` varchar(20) NOT NULL,
   PRIMARY KEY (`idcard`),
@@ -81,7 +81,7 @@ CREATE TABLE `cardtype` (
   KEY `cardnum_idx` (`cardnumber`),
   CONSTRAINT `cardnum` FOREIGN KEY (`cardnumber`) REFERENCES `card` (`cardnumber`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `idaccount` FOREIGN KEY (`idaccount`) REFERENCES `account` (`idaccount`) ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -183,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-25 10:17:32
+-- Dump completed on 2024-04-02 14:00:46

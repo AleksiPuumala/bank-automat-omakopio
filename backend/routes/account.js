@@ -35,7 +35,7 @@ router.post('/',function(request,response){
             console.log(result);
             response.json(result.affectedRows);
         }
-    })
+    });
 });
 
 router.put('/:id',function(request,response){
@@ -46,7 +46,7 @@ router.put('/:id',function(request,response){
         else {
             response.json(result.affectedRows);
         }
-    })
+    });
 });
 
 router.delete('/:id',function(request,response){
@@ -56,7 +56,7 @@ router.delete('/:id',function(request,response){
         } else {
             response.json(result.affectedRows);
         }
-    })
+    });
 });
 
 module.exports=router;
