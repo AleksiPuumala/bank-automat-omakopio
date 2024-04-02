@@ -7,6 +7,8 @@ const jwt=require('jsonwebtoken');
 var indexRouter = require('./routes/index');
 
 var cardRouter = require('./routes/card');
+var accountRouter = require('./routes/account');
+
 var loginRouter = require('./routes/login');
 
 var app = express();
@@ -23,6 +25,7 @@ app.use('/login', loginRouter);
 app.use(authenticateToken);
 
 app.use('/card', cardRouter);
+app.use('/account', accountRouter);
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
