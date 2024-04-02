@@ -7,12 +7,10 @@ const jwt=require('jsonwebtoken');
 var indexRouter = require('./routes/index');
 
 var cardRouter = require('./routes/card');
-<<<<<<< HEAD
 var accountRouter = require('./routes/account');
-=======
+
 var loginRouter = require('./routes/login');
 
->>>>>>> main
 var app = express();
 
 app.use(logger('dev'));
