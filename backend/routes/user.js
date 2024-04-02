@@ -12,7 +12,7 @@ router.get('/',function(request, response){
         }
     });
 });
-router.get('/',function(request, response){
+router.get('/:id',function(request, response){
     user.getOneUser(function(err, result){
         if(err){
             response.send(err);
@@ -32,7 +32,7 @@ router.post('/',function(request, response){
         }
     });
 });
-router.put('/',function(request, response){
+router.put('/id',function(request, response){
     user.updateUser(request.params.idcustomer, request.body, function(err, result){
         if(err){
             response.send(err);
@@ -42,7 +42,7 @@ router.put('/',function(request, response){
         }
     });
 });
-router.delete('/',function(reguest, response){
+router.delete('/id',function(reguest, response){
     user.deleteUser(function(err, result){
         if(err){
             response.send(err);
