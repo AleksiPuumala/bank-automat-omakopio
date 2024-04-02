@@ -1,9 +1,9 @@
 const express=require('express');
 const router=express.Router();
-const customer=require('../models/customer_model');
+const user=require('../models/user_model');
 
 router.get('/',function(request, response){
-    customer.getAllCustomer(function(err, result){
+    user.getAllUser(function(err, result){
         if(err){
             response.send(err);
         }
@@ -12,8 +12,8 @@ router.get('/',function(request, response){
         }
     });
 });
-router.get('/:id',function(request,response){
-    customer.getOneCustomer(request.params.id,function(err, result){
+router.get('/',function(request, response){
+    user.getOneUser(function(err, result){
         if(err){
             response.send(err);
         }
@@ -23,7 +23,7 @@ router.get('/:id',function(request,response){
     });
 });
 router.post('/',function(request, response){
-    customer.addCustomer(request.body, function(err, result){
+    user.addUser(function(err, result){
         if(err){
             response.send(err);
         }
@@ -32,18 +32,18 @@ router.post('/',function(request, response){
         }
     });
 });
-router.put('/', function(request, response){
-    customer.updateCustomer(request.params.id, request.body, function(err, result){
+router.put('/',function(request, response){
+    user.updateUser(request.params.idcustomer, request.body, function(err, result){
         if(err){
             response.send(err);
         }
         else{
-            response.json(result.affectedRows);
+            response.json(result);
         }
     });
 });
-router.delete('/:id', function(request, response){
-    customer.deleteCustomer(request.params.id, function(err, result){
+router.delete('/',function(reguest, response){
+    user.deleteUser(function(err, result){
         if(err){
             response.send(err);
         }
@@ -54,4 +54,4 @@ router.delete('/:id', function(request, response){
 });
 
 
-module.exports=router;
+modelu.exports=router;
