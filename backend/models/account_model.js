@@ -5,15 +5,22 @@ const account={
         return db.query("SELECT * FROM account",callback);
 
     },
-    getBalanceAccount(id,callback){
-        return db.query("SELECT * FROM balance WHERE idaccount=?",[id],callback);
+    getOneAccount(id,callback){ 
+        return db.query("SELECT * FROM account WHERE idaccount=?",id,callback);
 
     },
-    getCreditlimit(id,callback){
-        return db.query("SELECT * FROM creditlimit WHERE idaccount=?",[id],callback);
-    },
-    getidaccount(id,callback){
-        return db.query("SELECT * FROM idaccount WHERE idaccount=?",[id],callback);
-    }
+     addOneAccount(newaccount,callback){
+        return db.query("INSERT INTO account(idaccount, balance, creditlimit) VALUES(?,?,?)"[newaccount.idaccount, newaccount.balance, newaccount.creditlimit],callback)
+     },
+     updateOneAccount(id,updateaccount,callback){
+        return db.query("UPDATE account SET idaccount=?, balance=?, creditlimit=? "[updateaccount.idaccount,updateaccount.balance,updateaccount.creditlimit],callback)
+     },
+     deleteOneAccount(id,callback){
+        return db.query("DELETE FROM account WHERE idaccount=?",id,callback);
+     },
+
+    //add, update, delete
+
+    
 }
 module.exports=account;
