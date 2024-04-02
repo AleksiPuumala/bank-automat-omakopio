@@ -5,10 +5,8 @@ var logger = require('morgan');
 const jwt=require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
-
 var cardRouter = require('./routes/card');
 var accountRouter = require('./routes/account');
-
 var loginRouter = require('./routes/login');
 
 var app = express();
