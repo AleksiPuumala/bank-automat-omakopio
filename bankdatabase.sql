@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `bank_automat` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `bank_automat`;
 -- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank_automat
@@ -63,7 +61,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
-INSERT INTO `card` VALUES ('1234','debit','123');
+INSERT INTO `card` VALUES ('$2a$10$lBj.JuN5jS.JiceH1qXWoemum8uAQjmyB7gCWoE2YO35ZaMMFlHJG','credit','1234');
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -92,7 +90,6 @@ CREATE TABLE `cardtype` (
 
 LOCK TABLES `cardtype` WRITE;
 /*!40000 ALTER TABLE `cardtype` DISABLE KEYS */;
-INSERT INTO `cardtype` VALUES (1,1,'123');
 /*!40000 ALTER TABLE `cardtype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -186,4 +183,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-25 17:40:48
+-- Dump completed on 2024-04-02 14:00:46
