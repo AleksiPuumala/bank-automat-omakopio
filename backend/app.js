@@ -5,7 +5,8 @@ var logger = require('morgan');
 const jwt=require('jsonwebtoken');
 
 var indexRouter = require('./routes/index');
-
+var customerRouter = require('./routes/customer');
+var userRouter = require('./routes/user');
 var cardRouter = require('./routes/card');
 var accountRouter = require('./routes/account');
 
@@ -20,10 +21,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/customer', customerRouter);
 app.use('/login', loginRouter);
-
+app.use('/user', userRouter);
 app.use(authenticateToken);
-
 app.use('/card', cardRouter);
 app.use('/account', accountRouter);
 
