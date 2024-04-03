@@ -8,13 +8,13 @@ const customer={
         return db.query('SELECT * FROM customer WHERE idcustomer=?',[id],callback);
     },
     addCustomer(newCustomer, callback){
-        return db.query('INSERT INTO customer VALUES(?,?,?,?)',[newCustomer.fname,newCustomer.lname,newCustomer.city,newCustomer.birthdate], callback);
+        return db.query('INSERT INTO customer(fname,lname,city,birthdate) VALUES(?,?,?,?)',[newCustomer.fname,newCustomer.lname,newCustomer.city,newCustomer.birthdate], callback);
     },
     updateCustomer(id, updateData, callback){
-        return db.query('UPDATE customer SET fname=?,lname=?,city=?,birthdate=? WHERE idcustomer=?',[fname, lname, city, birthdate, id], callback);
+        return db.query('UPDATE customer SET fname=?,lname=?,city=?,birthdate=? WHERE idcustomer=?',[updateData.fname, updateData.lname, updateData.city, updateData.birthdate, id], callback);
     },
     deleteCustomer(id, callback){
-        return db.query('DELETE FROM customer WHERE idcustomer=?'[id],callback);
+        return db.query('DELETE FROM customer WHERE idcustomer=?',[id],callback);
     }
 
 }

@@ -13,7 +13,7 @@ router.get('/',function(request, response){
     });
 });
 router.get('/:id',function(request, response){
-    user.getOneUser(function(err, result){
+    user.getOneUser(request.params.id,function(err, result){
         if(err){
             response.send(err);
         }
@@ -23,7 +23,7 @@ router.get('/:id',function(request, response){
     });
 });
 router.post('/',function(request, response){
-    user.addUser(function(err, result){
+    user.addUser(request.body,function(err, result){
         if(err){
             response.send(err);
         }
@@ -32,7 +32,7 @@ router.post('/',function(request, response){
         }
     });
 });
-router.put('/id',function(request, response){
+router.put('/:id',function(request, response){
     user.updateUser(request.params.idcustomer, request.body, function(err, result){
         if(err){
             response.send(err);
@@ -42,8 +42,8 @@ router.put('/id',function(request, response){
         }
     });
 });
-router.delete('/id',function(reguest, response){
-    user.deleteUser(function(err, result){
+router.delete('/:id',function(request, response){
+    user.deleteUser(request.params.id,function(err, result){
         if(err){
             response.send(err);
         }
@@ -54,4 +54,4 @@ router.delete('/id',function(reguest, response){
 });
 
 
-modelu.exports=router;
+module.exports=router;

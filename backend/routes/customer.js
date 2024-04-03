@@ -32,7 +32,7 @@ router.post('/',function(request, response){
         }
     });
 });
-router.put('/', function(request, response){
+router.put('/:id', function(request, response){
     customer.updateCustomer(request.params.id, request.body, function(err, result){
         if(err){
             response.send(err);
