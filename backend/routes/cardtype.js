@@ -1,9 +1,9 @@
 const express=require('express');
 const router=express.Router();
-const user=require('../models/user_model');
+const cardtype=require('../models/cardtype_model');
 
 router.get('/',function(request, response){
-    user.getAllUser(function(err, result){
+    cardtype.getAllCardtype(function(err, result){
         if(err){
             response.send(err);
         }
@@ -13,7 +13,7 @@ router.get('/',function(request, response){
     });
 });
 router.get('/:id',function(request, response){
-    user.getOneUser(request.params.id,function(err, result){
+    cardtype.getOneCardtype(request.params.id,function(err, result){
         if(err){
             response.send(err);
         }
@@ -23,7 +23,7 @@ router.get('/:id',function(request, response){
     });
 });
 router.post('/',function(request, response){
-    user.addUser(request.body,function(err, result){
+    cardtype.addCardtype(request.body,function(err, result){
         if(err){
             response.send(err);
         }
@@ -33,7 +33,7 @@ router.post('/',function(request, response){
     });
 });
 router.put('/:id',function(request, response){
-    user.updateUser(request.params.id, request.body, function(err, result){
+    cardtype.updateCardtype(request.params.id, request.body, function(err, result){
         if(err){
             response.send(err);
         }
@@ -43,7 +43,7 @@ router.put('/:id',function(request, response){
     });
 });
 router.delete('/:id',function(request, response){
-    user.deleteUser(request.params.id,function(err, result){
+    cardtype.deleteCardtype(request.params.id,function(err, result){
         if(err){
             response.send(err);
         }

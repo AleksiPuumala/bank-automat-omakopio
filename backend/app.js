@@ -9,8 +9,10 @@ var customerRouter = require('./routes/customer');
 var userRouter = require('./routes/user');
 var cardRouter = require('./routes/card');
 var accountRouter = require('./routes/account');
+var cardtypeRouter = require('./routes/cardtype');
 
 var loginRouter = require('./routes/login');
+
 
 var app = express();
 
@@ -24,6 +26,7 @@ app.use('/', indexRouter);
 app.use('/customer', customerRouter);
 app.use('/login', loginRouter);
 app.use('/user', userRouter);
+app.use('/cardtype', cardtypeRouter);
 app.use(authenticateToken);
 app.use('/card', cardRouter);
 app.use('/account', accountRouter);
