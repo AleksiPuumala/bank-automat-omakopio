@@ -8,6 +8,8 @@ var indexRouter = require('./routes/index');
 var customerRouter = require('./routes/customer');
 var userRouter = require('./routes/user');
 var cardRouter = require('./routes/card');
+var accountRouter = require('./routes/account');
+
 var loginRouter = require('./routes/login');
 
 var app = express();
@@ -24,6 +26,7 @@ app.use('/login', loginRouter);
 app.use('/user', userRouter);
 app.use(authenticateToken);
 app.use('/card', cardRouter);
+app.use('/account', accountRouter);
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
