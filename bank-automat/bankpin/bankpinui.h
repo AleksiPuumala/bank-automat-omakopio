@@ -2,6 +2,9 @@
 #define BANKPINUI_H
 
 #include "bankpin_global.h"
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 #include <QDialog>
 
 namespace Ui {
@@ -31,11 +34,16 @@ private slots:
     void on_btnEnter_clicked();
     void on_btnClear_clicked();
 
-//
+    void loginSlot(QNetworkReply *reply);
 
 private:
     Ui::bankPinUi *ui;
     QString Number;
+    QString pinNumber;
+
+    QNetworkAccessManager *loginManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
 
     void numberClickHandler();
     void clearAndEnterHandler();

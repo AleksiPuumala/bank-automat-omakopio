@@ -219,6 +219,7 @@ Makefile: ../bankpin.pro C:/Qt/6.5.2/mingw_64/mkspecs/win32-g++/qmake.conf C:/Qt
 		../bankpin.pro \
 		C:/Qt/6.5.2/mingw_64/lib/Qt6Widgets.prl \
 		C:/Qt/6.5.2/mingw_64/lib/Qt6Gui.prl \
+		C:/Qt/6.5.2/mingw_64/lib/Qt6Network.prl \
 		C:/Qt/6.5.2/mingw_64/lib/Qt6Core.prl \
 		C:/Qt/6.5.2/mingw_64/mkspecs/features/build_pass.prf
 	$(QMAKE) -o Makefile ../bankpin.pro -spec win32-g++ CONFIG+=debug CONFIG+=qml_debug
@@ -371,6 +372,7 @@ C:/Qt/6.5.2/mingw_64/mkspecs/features/lex.prf:
 ../bankpin.pro:
 C:/Qt/6.5.2/mingw_64/lib/Qt6Widgets.prl:
 C:/Qt/6.5.2/mingw_64/lib/Qt6Gui.prl:
+C:/Qt/6.5.2/mingw_64/lib/Qt6Network.prl:
 C:/Qt/6.5.2/mingw_64/lib/Qt6Core.prl:
 C:/Qt/6.5.2/mingw_64/mkspecs/features/build_pass.prf:
 qmake: FORCE

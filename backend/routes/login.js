@@ -11,8 +11,8 @@ router.post('/',function(request,response){
         card.login(request.body.cardnumber, function(err, result){
             if(err){
                 console.log('jokin meni pieleen');
-                console.log(errno);
-                response.json(errno);
+                console.log(err.errno);
+                response.json(err.errno);
             } else {
                 // Tarkistetaan onko syötetty PIN luku tyhjä
                 if(result.length > 0){
