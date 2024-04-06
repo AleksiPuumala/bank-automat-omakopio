@@ -29,6 +29,17 @@ void bankPinUi::clearAndEnterHandler()
     QPushButton *button = qobject_cast<QPushButton*>(sender());
     QString name = button->objectName();
     qDebug()<<"Button name: "+name;
+
+    if(name=="btnClear"){
+        qDebug()<<"clear pin";
+        Number="";
+        ui->linePin->setText(Number);
+    }
+    else {
+        // lähetä pin ja kortin numero rest apiin
+    }
+
+
 }
 
 
@@ -70,15 +81,13 @@ void bankPinUi::on_btn0_clicked(){
 
 // CLEAR JA ENTER
 
-void bankPinUi::on_btnEnter_clicked()
-{
-
+void bankPinUi::on_btnEnter_clicked(){
+    clearAndEnterHandler();
 }
 
 
-void bankPinUi::on_btnClear_clicked()
-{
-
+void bankPinUi::on_btnClear_clicked(){
+    clearAndEnterHandler();
 }
 
 

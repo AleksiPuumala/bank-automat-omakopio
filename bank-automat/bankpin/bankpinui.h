@@ -31,6 +31,8 @@ private slots:
     void on_btnEnter_clicked();
     void on_btnClear_clicked();
 
+//
+
 private:
     Ui::bankPinUi *ui;
     QString Number;
