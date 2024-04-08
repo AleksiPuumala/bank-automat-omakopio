@@ -22,6 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
     } else {
         qDebug() << "Serial port ei avaudu";
     }
+    ptr_pinui = new bankPinUi(this);
+    ptr_pinui->show();
 }
 
 MainWindow::~MainWindow()

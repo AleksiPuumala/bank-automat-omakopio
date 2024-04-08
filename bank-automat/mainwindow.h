@@ -5,6 +5,11 @@
 
 #include <QMainWindow>
 #include <QSerialPort>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
+#include "bankpinui.h"
+
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +30,7 @@ private:
     Ui::MainWindow *ui;
     QSerialPort *serialPort;
     QString serialData; // Tähän tallennetaan serialportin data
+    bankPinUi * ptr_pinui;
 };
 
 #endif // MAINWINDOW_H
