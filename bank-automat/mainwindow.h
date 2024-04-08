@@ -1,5 +1,3 @@
-//mainwindow.h
-
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
@@ -9,7 +7,6 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "bankpinui.h"
-
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -25,6 +22,8 @@ public:
 
 private slots:
     void readSerialData();
+    void selectCreditCard();
+    void selectDebitCard();
 
 private:
     Ui::MainWindow *ui;
