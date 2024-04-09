@@ -27,3 +27,9 @@ win32: LIBS += -L$$PWD/bankpin/build/debug/ -lbankpin
 
 INCLUDEPATH += $$PWD/bankpin
 DEPENDPATH += $$PWD/bankpin
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/bankAccountMain/build/release/ -lbankAccountMain
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/bankAccountMain/build/debug/ -lbankAccountMain
+
+INCLUDEPATH += $$PWD/bankAccountMain
+DEPENDPATH += $$PWD/bankAccountMain

@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    ptr_pinui = new bankPinUi(this);
-    ptr_pinui->show();
+    ptr_account = new account(this);
+    ptr_account->show();
 }
 
 MainWindow::~MainWindow()

@@ -6,6 +6,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "bankpinui.h"
+#include "account.h"
 
 
 QT_BEGIN_NAMESPACE
@@ -25,5 +26,6 @@ public:
 private:
     Ui::MainWindow *ui;
     bankPinUi * ptr_pinui;
+    account * ptr_account;
 };
 #endif // MAINWINDOW_H
