@@ -40,6 +40,7 @@ private:
     Ui::bankPinUi *ui;
     QString Number;
     QString pinNumber;
+    int loginNum;
 
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
