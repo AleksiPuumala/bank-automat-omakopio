@@ -25,5 +25,7 @@ public:
 private:
     Ui::MainWindow *ui;
     bankPinUi * ptr_pinui;
+private slots:
+    void loginSlot(QByteArray);
 };
 #endif // MAINWINDOW_H

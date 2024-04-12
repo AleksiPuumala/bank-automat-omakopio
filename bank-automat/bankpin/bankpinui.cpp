@@ -70,16 +70,19 @@ void bankPinUi::loginSlot(QNetworkReply *reply)
         msgBox.setText("Palvelin ei vastaa");
         msgBox.exec();
         bankPinUi::close();
-    }
+    } else
     if(response_data=="-4078"){
         msgBox.setText("Tietokantavirhe");
         msgBox.exec();
         bankPinUi::close();
     }
-    if(response_data!="false"){
+     else if(response_data!="false" && response_data!=""){
             qDebug()<<"kirjautuminen ok";
             msgBox.setText("Kirjautuminen OK");
             msgBox.exec();
+
+
+            emit loginSignal(response_data);
 
             qDebug()<<"clear pin";
             Number="";
