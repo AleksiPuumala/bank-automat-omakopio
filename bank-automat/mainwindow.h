@@ -30,6 +30,10 @@ private:
     QSerialPort *serialPort;
     QString serialData; // Tähän tallennetaan serialportin data
     bankPinUi * ptr_pinui;
+
+    QNetworkAccessManager *cardManager;
+    QNetworkReply *reply;
+
 private slots:
     void loginSlot(QByteArray);
 

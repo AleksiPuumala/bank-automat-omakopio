@@ -90,4 +90,18 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
 {
     qDebug()<<"mainwindow slot ok";
     qDebug()<< response_data;
+
+
+        // Testaa toimiiko
+
+    QString site_url="http://localhost:3000/cardselect";
+    QNetworkRequest request((site_url));
+    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
+    QString token= "Bearer " + response_data;
+    request.setRawHeader("Authorization", token.toLocal8Bit());
+    cardManager = new QNetworkAccessManager(this);
+    connect(cardManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(accountSlot(QNetworkReply*)));
+
+    reply = cardManager->get(request);
+    qDebug()<< reply->readAll();
 }

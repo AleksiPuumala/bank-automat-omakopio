@@ -12,7 +12,7 @@ var userRouter = require('./routes/user');
 var cardRouter = require('./routes/card');
 var accountRouter = require('./routes/account');
 var cardtypeRouter = require('./routes/cardtype');
-
+var cardSelectRouter = require('./routes/cardselect');
 var loginRouter = require('./routes/login');
 
 
@@ -27,7 +27,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 
 app.use('/login', loginRouter);
-app.use(authenticateToken);
+//app.use(authenticateToken);
+app.use('/cardselect', cardSelectRouter);
 app.use('/transaction', transactionRouter);
 app.use('/customer', customerRouter);
 app.use('/user', userRouter);
