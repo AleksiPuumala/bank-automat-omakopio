@@ -35,11 +35,13 @@ private slots:
     void on_btnClear_clicked();
 
     void loginSlot(QNetworkReply *reply);
+    void cardNum(QString);
 
 private:
     Ui::bankPinUi *ui;
     QString Number;
     QString pinNumber;
+    QString cardnum;
     short loginNum;
 
     QNetworkAccessManager *loginManager;

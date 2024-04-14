@@ -41,7 +41,9 @@ void bankPinUi::clearAndEnterHandler()
     }
     else {
         qDebug()<<pinNumber;
-        QString cardnum="1234"; //väliaikainen korttinumero.
+        qDebug()<<cardnum;
+        qDebug()<<"jotaki";
+        //QString cardnum="1234"; //väliaikainen korttinumero.
 
         QJsonObject jsonObj; //lähetettävä json paketti
         jsonObj.insert("cardnumber",cardnum);
@@ -107,6 +109,14 @@ void bankPinUi::loginSlot(QNetworkReply *reply)
                 bankPinUi::close();
         }
     }
+}
+
+void bankPinUi::cardNum(QString card)
+{
+    card.remove(0, 3);
+    card.remove(10, 3);
+    cardnum=card;
+    qDebug()<<card;
 }
 
 
