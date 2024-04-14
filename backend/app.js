@@ -26,12 +26,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 
+app.use('/login', loginRouter);
+app.use(authenticateToken);
 app.use('/transaction', transactionRouter);
 app.use('/customer', customerRouter);
-app.use('/login', loginRouter);
 app.use('/user', userRouter);
 app.use('/cardtype', cardtypeRouter);
-app.use(authenticateToken);
 app.use('/card', cardRouter);
 app.use('/account', accountRouter);
 
