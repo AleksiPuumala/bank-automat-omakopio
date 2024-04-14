@@ -32,6 +32,9 @@ private:
     bankPinUi * ptr_pinui;
 private slots:
     void loginSlot(QByteArray);
+
+signals:
+    void pinSignal(QString);
 };
 
 #endif // MAINWINDOW_H

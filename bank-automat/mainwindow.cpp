@@ -28,10 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     // Liitetään debit- ja credit-painikkeiden käsittelijät
     connect(ui->debit, &QPushButton::clicked, this, &MainWindow::selectDebitCard);
     connect(ui->credit, &QPushButton::clicked, this, &MainWindow::selectCreditCard);
-    ptr_pinui = new bankPinUi(this);
-    connect(ptr_pinui, SIGNAL(loginSignal(QByteArray)),
-            this, SLOT (loginSlot(QByteArray)));
-    ptr_pinui->show();
 }
 
 
@@ -47,12 +43,19 @@ void MainWindow::readSerialData()
 {
     // Tallenna sarjaportin data QStringiin
     serialData = QString(serialPort->readAll());
+    ptr_pinui = new bankPinUi(this);
+    connect(ptr_pinui, SIGNAL(loginSignal(QByteArray)),
+            this, SLOT (loginSlot(QByteArray)));
+    connect(this, SIGNAL (pinSignal(QString)),
+            ptr_pinui, SLOT(cardNum(QString)));
 
+    emit pinSignal(serialData);
+    ptr_pinui->show();
     // Etsi datasta määriteltyjä kortteja ja avaa pinkoodi-ikkuna jos kortti löytyy
-    if (serialData.contains("060006235F"))
+    /* if (serialData.contains("060006235F"))
     {
-        ui->infoTeksti->setText("Debit-kortti syötettiin");
-        ptr_pinui->show();
+       ui->infoTeksti->setText("Debit-kortti syötettiin");
+         ptr_pinui->show();
     }
     else if (serialData.contains("06000620D0"))
     {
@@ -69,7 +72,7 @@ void MainWindow::readSerialData()
     {
         // Jos käytetään tuntematonta korttia
         ui->infoTeksti->setText("Virheellinen kortti");
-    }
+    } */
 }
 
 void MainWindow::selectCreditCard()
@@ -82,7 +85,9 @@ void MainWindow::selectDebitCard()
 {
     ui->infoTeksti->setText("Debit-kortti valittu");
     ptr_pinui->show();
-void MainWindow::loginSlot(QByteArray response_data)
+}
+void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero ja webtoken
 {
     qDebug()<<"mainwindow slot ok";
+    qDebug()<< response_data;
 }
