@@ -29,3 +29,4 @@ win32: LIBS += -L$$PWD/bankpin/build/debug/ -lbankpin
 
 INCLUDEPATH += $$PWD/bankpin
 DEPENDPATH += $$PWD/bankpin
+

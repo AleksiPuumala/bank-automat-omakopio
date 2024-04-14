@@ -28,6 +28,10 @@ MainWindow::MainWindow(QWidget *parent) :
     // Liitetään debit- ja credit-painikkeiden käsittelijät
     connect(ui->debit, &QPushButton::clicked, this, &MainWindow::selectDebitCard);
     connect(ui->credit, &QPushButton::clicked, this, &MainWindow::selectCreditCard);
+    ptr_pinui = new bankPinUi(this);
+    connect(ptr_pinui, SIGNAL(loginSignal(QByteArray)),
+            this, SLOT (loginSlot(QByteArray)));
+    ptr_pinui->show();
 }
 
 
@@ -78,4 +82,7 @@ void MainWindow::selectDebitCard()
 {
     ui->infoTeksti->setText("Debit-kortti valittu");
     ptr_pinui->show();
+void MainWindow::loginSlot(QByteArray response_data)
+{
+    qDebug()<<"mainwindow slot ok";
 }

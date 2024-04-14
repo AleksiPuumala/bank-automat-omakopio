@@ -30,6 +30,8 @@ private:
     QSerialPort *serialPort;
     QString serialData; // Tähän tallennetaan serialportin data
     bankPinUi * ptr_pinui;
+private slots:
+    void loginSlot(QByteArray);
 };
 
 #endif // MAINWINDOW_H

@@ -7,6 +7,7 @@ bankPinUi::bankPinUi(QWidget *parent)
     , ui(new Ui::bankPinUi)
 {
     ui->setupUi(this);
+    loginNum=3;
 }
 
 bankPinUi::~bankPinUi()
@@ -56,38 +57,54 @@ void bankPinUi::clearAndEnterHandler()
         reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
     }
 
-
 }
 
 void bankPinUi::loginSlot(QNetworkReply *reply)
 {
+    qDebug()<<"loginslot";
     response_data=reply->readAll();
     qDebug()<<response_data;
     QMessageBox msgBox;
+    if (response_data==""){
+        qDebug()<<"Palvelin ei vastaa";
+        msgBox.setText("Palvelin ei vastaa");
+        msgBox.exec();
+        bankPinUi::close();
+    } else
     if(response_data=="-4078"){
         msgBox.setText("Tietokantavirhe");
         msgBox.exec();
-
-    } else {
-        if(response_data!="false"){
-            // kirjautuminen ok, avataan tili ikkuna
+        bankPinUi::close();
+    }
+     else if(response_data!="false" && response_data!=""){
+            qDebug()<<"kirjautuminen ok";
             msgBox.setText("Kirjautuminen OK");
             msgBox.exec();
+
+
+            emit loginSignal(response_data);
 
             qDebug()<<"clear pin";
             Number="";
             pinNumber="";
             ui->linePin->setText(Number);
-
         } else {
             // kirjautuminen ei onnistunut
             msgBox.setText("Väärä PIN");
             msgBox.exec();
 
+            qDebug()<<"väärä pin";
             qDebug()<<"clear pin";
             Number="";
             pinNumber="";
             ui->linePin->setText(Number);
+            loginNum=loginNum-1;
+
+            if(loginNum==0){ //kirjautumis yritykset = 0
+                qDebug()<<"yritys loppu";
+                msgBox.setText("Yritykset loppu");
+                msgBox.exec();
+                bankPinUi::close();
         }
     }
 }

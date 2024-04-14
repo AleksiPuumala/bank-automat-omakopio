@@ -40,6 +40,7 @@ private:
     Ui::bankPinUi *ui;
     QString Number;
     QString pinNumber;
+    short loginNum;
 
     QNetworkAccessManager *loginManager;
     QNetworkReply *reply;
@@ -47,6 +48,8 @@ private:
 
     void numberClickHandler();
     void clearAndEnterHandler();
+signals:
+    void loginSignal(QByteArray);
 };
 
 #endif // BANKPINUI_H

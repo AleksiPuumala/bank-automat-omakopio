@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'bankpinui.h'
 **
-** Created by: The Qt Meta Object Compiler version 68 (Qt 6.5.2)
+** Created by: The Qt Meta Object Compiler version 68 (Qt 6.7.0)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -11,19 +11,16 @@
 #include <QtNetwork/QSslError>
 #include <QtCore/qmetatype.h>
 
-#if __has_include(<QtCore/qtmochelpers.h>)
 #include <QtCore/qtmochelpers.h>
-#else
-QT_BEGIN_MOC_NAMESPACE
-#endif
-
 
 #include <memory>
 
+
+#include <QtCore/qxptype_traits.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'bankpinui.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
-#error "This file was generated using the moc from 6.5.2. It"
+#error "This file was generated using the moc from 6.7.0. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -39,10 +36,11 @@ namespace {
 
 #ifdef QT_MOC_HAS_STRINGDATA
 struct qt_meta_stringdata_CLASSbankPinUiENDCLASS_t {};
-static constexpr auto qt_meta_stringdata_CLASSbankPinUiENDCLASS = QtMocHelpers::stringData(
+constexpr auto qt_meta_stringdata_CLASSbankPinUiENDCLASS = QtMocHelpers::stringData(
     "bankPinUi",
-    "on_btn1_clicked",
+    "loginSignal",
     "",
+    "on_btn1_clicked",
     "on_btn2_clicked",
     "on_btn3_clicked",
     "on_btn4_clicked",
@@ -58,98 +56,44 @@ static constexpr auto qt_meta_stringdata_CLASSbankPinUiENDCLASS = QtMocHelpers::
     "QNetworkReply*",
     "reply"
 );
-#else  // !QT_MOC_HAS_STRING_DATA
-struct qt_meta_stringdata_CLASSbankPinUiENDCLASS_t {
-    uint offsetsAndSizes[34];
-    char stringdata0[10];
-    char stringdata1[16];
-    char stringdata2[1];
-    char stringdata3[16];
-    char stringdata4[16];
-    char stringdata5[16];
-    char stringdata6[16];
-    char stringdata7[16];
-    char stringdata8[16];
-    char stringdata9[16];
-    char stringdata10[16];
-    char stringdata11[16];
-    char stringdata12[20];
-    char stringdata13[20];
-    char stringdata14[10];
-    char stringdata15[15];
-    char stringdata16[6];
-};
-#define QT_MOC_LITERAL(ofs, len) \
-    uint(sizeof(qt_meta_stringdata_CLASSbankPinUiENDCLASS_t::offsetsAndSizes) + ofs), len 
-Q_CONSTINIT static const qt_meta_stringdata_CLASSbankPinUiENDCLASS_t qt_meta_stringdata_CLASSbankPinUiENDCLASS = {
-    {
-        QT_MOC_LITERAL(0, 9),  // "bankPinUi"
-        QT_MOC_LITERAL(10, 15),  // "on_btn1_clicked"
-        QT_MOC_LITERAL(26, 0),  // ""
-        QT_MOC_LITERAL(27, 15),  // "on_btn2_clicked"
-        QT_MOC_LITERAL(43, 15),  // "on_btn3_clicked"
-        QT_MOC_LITERAL(59, 15),  // "on_btn4_clicked"
-        QT_MOC_LITERAL(75, 15),  // "on_btn5_clicked"
-        QT_MOC_LITERAL(91, 15),  // "on_btn6_clicked"
-        QT_MOC_LITERAL(107, 15),  // "on_btn7_clicked"
-        QT_MOC_LITERAL(123, 15),  // "on_btn8_clicked"
-        QT_MOC_LITERAL(139, 15),  // "on_btn9_clicked"
-        QT_MOC_LITERAL(155, 15),  // "on_btn0_clicked"
-        QT_MOC_LITERAL(171, 19),  // "on_btnEnter_clicked"
-        QT_MOC_LITERAL(191, 19),  // "on_btnClear_clicked"
-        QT_MOC_LITERAL(211, 9),  // "loginSlot"
-        QT_MOC_LITERAL(221, 14),  // "QNetworkReply*"
-        QT_MOC_LITERAL(236, 5)   // "reply"
-    },
-    "bankPinUi",
-    "on_btn1_clicked",
-    "",
-    "on_btn2_clicked",
-    "on_btn3_clicked",
-    "on_btn4_clicked",
-    "on_btn5_clicked",
-    "on_btn6_clicked",
-    "on_btn7_clicked",
-    "on_btn8_clicked",
-    "on_btn9_clicked",
-    "on_btn0_clicked",
-    "on_btnEnter_clicked",
-    "on_btnClear_clicked",
-    "loginSlot",
-    "QNetworkReply*",
-    "reply"
-};
-#undef QT_MOC_LITERAL
-#endif // !QT_MOC_HAS_STRING_DATA
+#else  // !QT_MOC_HAS_STRINGDATA
+#error "qtmochelpers.h not found or too old."
+#endif // !QT_MOC_HAS_STRINGDATA
 } // unnamed namespace
 
 Q_CONSTINIT static const uint qt_meta_data_CLASSbankPinUiENDCLASS[] = {
 
  // content:
-      11,       // revision
+      12,       // revision
        0,       // classname
        0,    0, // classinfo
-      13,   14, // methods
+      14,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       1,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags, initial metatype offsets
+       1,    1,   98,    2, 0x06,    1 /* Public */,
 
  // slots: name, argc, parameters, tag, flags, initial metatype offsets
-       1,    0,   92,    2, 0x08,    1 /* Private */,
-       3,    0,   93,    2, 0x08,    2 /* Private */,
-       4,    0,   94,    2, 0x08,    3 /* Private */,
-       5,    0,   95,    2, 0x08,    4 /* Private */,
-       6,    0,   96,    2, 0x08,    5 /* Private */,
-       7,    0,   97,    2, 0x08,    6 /* Private */,
-       8,    0,   98,    2, 0x08,    7 /* Private */,
-       9,    0,   99,    2, 0x08,    8 /* Private */,
-      10,    0,  100,    2, 0x08,    9 /* Private */,
-      11,    0,  101,    2, 0x08,   10 /* Private */,
-      12,    0,  102,    2, 0x08,   11 /* Private */,
-      13,    0,  103,    2, 0x08,   12 /* Private */,
-      14,    1,  104,    2, 0x08,   13 /* Private */,
+       3,    0,  101,    2, 0x08,    3 /* Private */,
+       4,    0,  102,    2, 0x08,    4 /* Private */,
+       5,    0,  103,    2, 0x08,    5 /* Private */,
+       6,    0,  104,    2, 0x08,    6 /* Private */,
+       7,    0,  105,    2, 0x08,    7 /* Private */,
+       8,    0,  106,    2, 0x08,    8 /* Private */,
+       9,    0,  107,    2, 0x08,    9 /* Private */,
+      10,    0,  108,    2, 0x08,   10 /* Private */,
+      11,    0,  109,    2, 0x08,   11 /* Private */,
+      12,    0,  110,    2, 0x08,   12 /* Private */,
+      13,    0,  111,    2, 0x08,   13 /* Private */,
+      14,    0,  112,    2, 0x08,   14 /* Private */,
+      15,    1,  113,    2, 0x08,   15 /* Private */,
+
+ // signals: parameters
+    QMetaType::Void, QMetaType::QByteArray,    2,
 
  // slots: parameters
     QMetaType::Void,
@@ -164,7 +108,7 @@ Q_CONSTINIT static const uint qt_meta_data_CLASSbankPinUiENDCLASS[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 15,   16,
+    QMetaType::Void, 0x80000000 | 16,   17,
 
        0        // eod
 };
@@ -178,6 +122,9 @@ Q_CONSTINIT const QMetaObject bankPinUi::staticMetaObject = { {
     qt_incomplete_metaTypeArray<qt_meta_stringdata_CLASSbankPinUiENDCLASS_t,
         // Q_OBJECT / Q_GADGET
         QtPrivate::TypeAndForceComplete<bankPinUi, std::true_type>,
+        // method 'loginSignal'
+        QtPrivate::TypeAndForceComplete<void, std::false_type>,
+        QtPrivate::TypeAndForceComplete<QByteArray, std::false_type>,
         // method 'on_btn1_clicked'
         QtPrivate::TypeAndForceComplete<void, std::false_type>,
         // method 'on_btn2_clicked'
@@ -215,31 +162,41 @@ void bankPinUi::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
         auto *_t = static_cast<bankPinUi *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_btn1_clicked(); break;
-        case 1: _t->on_btn2_clicked(); break;
-        case 2: _t->on_btn3_clicked(); break;
-        case 3: _t->on_btn4_clicked(); break;
-        case 4: _t->on_btn5_clicked(); break;
-        case 5: _t->on_btn6_clicked(); break;
-        case 6: _t->on_btn7_clicked(); break;
-        case 7: _t->on_btn8_clicked(); break;
-        case 8: _t->on_btn9_clicked(); break;
-        case 9: _t->on_btn0_clicked(); break;
-        case 10: _t->on_btnEnter_clicked(); break;
-        case 11: _t->on_btnClear_clicked(); break;
-        case 12: _t->loginSlot((*reinterpret_cast< std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
+        case 0: _t->loginSignal((*reinterpret_cast< std::add_pointer_t<QByteArray>>(_a[1]))); break;
+        case 1: _t->on_btn1_clicked(); break;
+        case 2: _t->on_btn2_clicked(); break;
+        case 3: _t->on_btn3_clicked(); break;
+        case 4: _t->on_btn4_clicked(); break;
+        case 5: _t->on_btn5_clicked(); break;
+        case 6: _t->on_btn6_clicked(); break;
+        case 7: _t->on_btn7_clicked(); break;
+        case 8: _t->on_btn8_clicked(); break;
+        case 9: _t->on_btn9_clicked(); break;
+        case 10: _t->on_btn0_clicked(); break;
+        case 11: _t->on_btnEnter_clicked(); break;
+        case 12: _t->on_btnClear_clicked(); break;
+        case 13: _t->loginSlot((*reinterpret_cast< std::add_pointer_t<QNetworkReply*>>(_a[1]))); break;
         default: ;
         }
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
         switch (_id) {
         default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
-        case 12:
+        case 13:
             switch (*reinterpret_cast<int*>(_a[1])) {
             default: *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType(); break;
             case 0:
                 *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType::fromType< QNetworkReply* >(); break;
             }
             break;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        {
+            using _t = void (bankPinUi::*)(QByteArray );
+            if (_t _q_method = &bankPinUi::loginSignal; *reinterpret_cast<_t *>(_a[1]) == _q_method) {
+                *result = 0;
+                return;
+            }
         }
     }
 }
@@ -263,14 +220,21 @@ int bankPinUi::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 13)
+        if (_id < 14)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 13;
+        _id -= 14;
     }
     return _id;
+}
+
+// SIGNAL 0
+void bankPinUi::loginSignal(QByteArray _t1)
+{
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP
