@@ -9,9 +9,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    ui->debit->hide(); //näitä tarvitaan jos käytetään kaksoiskorttia
-    ui->credit->hide();
-
     serialPort->setPortName("COM4"); // TÄHÄN USB-PORTIN KANAVA
     serialPort->setBaudRate(QSerialPort::Baud9600); // Siirtonopeus
 
@@ -24,10 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
     } else {
         qDebug() << "Serial port ei avaudu";
     }
-
-    // Liitetään debit- ja credit-painikkeiden käsittelijät
-    connect(ui->debit, &QPushButton::clicked, this, &MainWindow::selectDebitCard);
-    connect(ui->credit, &QPushButton::clicked, this, &MainWindow::selectCreditCard);
 }
 
 
@@ -51,41 +44,9 @@ void MainWindow::readSerialData()
 
     emit pinSignal(serialData);
     ptr_pinui->show();
-    // Etsi datasta määriteltyjä kortteja ja avaa pinkoodi-ikkuna jos kortti löytyy
-    /* if (serialData.contains("060006235F"))
-    {
-       ui->infoTeksti->setText("Debit-kortti syötettiin");
-         ptr_pinui->show();
-    }
-    else if (serialData.contains("06000620D0"))
-    {
-        ui->infoTeksti->setText("Credit-kortti syötettiin");
-        ptr_pinui->show();
-    }
-    else if (serialData.contains("0500CB33C7"))
-    {
-        ui->infoTeksti->setText("Valitse kortin tyyppi");
-        ui->debit->show();
-        ui->credit->show();
-    }
-    else
-    {
-        // Jos käytetään tuntematonta korttia
-        ui->infoTeksti->setText("Virheellinen kortti");
-    } */
+
 }
 
-void MainWindow::selectCreditCard()
-{
-    ui->infoTeksti->setText("Credit-kortti valittu");
-    ptr_pinui->show();
-}
-
-void MainWindow::selectDebitCard()
-{
-    ui->infoTeksti->setText("Debit-kortti valittu");
-    ptr_pinui->show();
-}
 void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero ja webtoken
 {
     qDebug()<<"mainwindow slot ok";
