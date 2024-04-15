@@ -1,3 +1,5 @@
+QT       += core gui serialport
+
 QT       += core gui
 QT += network
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
@@ -27,3 +29,4 @@ win32: LIBS += -L$$PWD/bankpin/build/debug/ -lbankpin
 
 INCLUDEPATH += $$PWD/bankpin
 DEPENDPATH += $$PWD/bankpin
+
