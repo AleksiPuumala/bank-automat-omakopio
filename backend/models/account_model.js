@@ -8,10 +8,10 @@ const account={
         return db.query("SELECT * FROM account WHERE idaccount=?",id,callback);
     },
      addOneAccount(newaccount,callback){
-        return db.query("INSERT INTO account(idaccount,balance,creditlimit) VALUES(?,?,?)",[newaccount.idaccount, newaccount.balance, newaccount.creditlimit],callback)
+        return db.query("INSERT INTO account(idaccount,balance,creditlimit,accounttype) VALUES(?,?,?,?)",[newaccount.idaccount, newaccount.balance, newaccount.creditlimit, newaccount.accounttype],callback)
      },
      updateOneAccount(id,updateaccount,callback){
-        return db.query("UPDATE account SET balance=?, creditlimit=? WHERE idaccount=?",[updateaccount.balance,updateaccount.creditlimit,id],callback)
+        return db.query("UPDATE account SET balance=?, creditlimit=?, accounttype=? WHERE idaccount=?",[updateaccount.balance,updateaccount.creditlimit,updateaccount.accounttype,id],callback)
      },
      deleteOneAccount(id,callback){
         return db.query("DELETE FROM account WHERE idaccount=?",id,callback);
