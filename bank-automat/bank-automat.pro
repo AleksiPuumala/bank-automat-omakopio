@@ -25,8 +25,9 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-win32: LIBS += -L$$PWD/bankpin/build/debug/ -lbankpin
+
+
+win32: LIBS += -L$$PWD/bankpin/build/Desktop_Qt_6_7_0_MinGW_64_bit-Debug/debug/ -lbankpin
 
 INCLUDEPATH += $$PWD/bankpin
 DEPENDPATH += $$PWD/bankpin
-

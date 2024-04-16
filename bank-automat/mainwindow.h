@@ -22,8 +22,8 @@ public:
 
 private slots:
     void readSerialData();
-    void selectCreditCard();
-    void selectDebitCard();
+  //  void selectCreditCard();
+    //void selectDebitCard();
 
 private:
     Ui::MainWindow *ui;
@@ -36,6 +36,7 @@ private:
 
 private slots:
     void loginSlot(QByteArray);
+    void accountSlot();   //testi slot, poista myöhemmin
 
 signals:
     void pinSignal(QString);

@@ -9,7 +9,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    serialPort->setPortName("COM4"); // TÄHÄN USB-PORTIN KANAVA
+    serialPort->setPortName("COM5"); // TÄHÄN USB-PORTIN KANAVA
     serialPort->setBaudRate(QSerialPort::Baud9600); // Siirtonopeus
 
     // Kun sarjaporttiin tulee uutta dataa, kutsu readSerialData
@@ -60,9 +60,15 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
     QString token= "Bearer " + response_data;
     request.setRawHeader("Authorization", token.toLocal8Bit());
+
     cardManager = new QNetworkAccessManager(this);
-    connect(cardManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(accountSlot(QNetworkReply*)));
+    connect(cardManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(accountSlot()));
 
     reply = cardManager->get(request);
     qDebug()<< reply->readAll();
+}
+
+void MainWindow::accountSlot()
+{
+    qDebug()<<"account slot ok";
 }
