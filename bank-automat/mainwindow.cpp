@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     serialPort(new QSerialPort(this)),
     ptr_pinui(new bankPinUi(this))
+
 {
     ui->setupUi(this);
 
@@ -68,7 +69,9 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
     qDebug()<< reply->readAll();
 }
 
+
 void MainWindow::accountSlot()
 {
     qDebug()<<"account slot ok";
 }
+

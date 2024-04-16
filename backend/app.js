@@ -14,6 +14,7 @@ var accountRouter = require('./routes/account');
 var cardtypeRouter = require('./routes/cardtype');
 var cardSelectRouter = require('./routes/cardselect');
 var loginRouter = require('./routes/login');
+var withdrawRouter = require('./routes/withdraw');
 
 
 var app = express();
@@ -35,6 +36,7 @@ app.use('/user', userRouter);
 app.use('/cardtype', cardtypeRouter);
 app.use('/card', cardRouter);
 app.use('/account', accountRouter);
+app.use('/withdraw', withdrawRouter);
 
 function authenticateToken(req, res, next) {
     const authHeader = req.headers['authorization']
