@@ -7,6 +7,7 @@
 #include <QNetworkAccessManager>
 #include <QJsonDocument>
 #include "bankpinui.h"
+#include "account.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -22,14 +23,17 @@ public:
 
 private slots:
     void readSerialData();
-    void selectCreditCard();
-    void selectDebitCard();
+    //void selectCreditCard();
+    //void selectDebitCard();
 
 private:
     Ui::MainWindow *ui;
     QSerialPort *serialPort;
     QString serialData; // Tähän tallennetaan serialportin data
     bankPinUi * ptr_pinui;
+
+    account * ptr_account;
+
 
     QNetworkAccessManager *cardManager;
     QNetworkReply *reply;
@@ -39,6 +43,7 @@ private slots:
 
 signals:
     void pinSignal(QString);
+
 };
 
 #endif // MAINWINDOW_H

@@ -3,4 +3,7 @@ bank-automat/build/
 bank-automat/*.user
 backend/*.env
 bank-automat/bankpin/*.user
-bank-automat/bankpin/build
+bank-automat/bankpin/build/
+bank-automat/bankAccountMain/build/
+bank-automat/bankAccountMain/*.pro.user
+
