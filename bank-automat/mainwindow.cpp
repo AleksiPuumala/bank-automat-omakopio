@@ -6,12 +6,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow),
     serialPort(new QSerialPort(this)),
     ptr_pinui(new bankPinUi(this))
+
 {
     ui->setupUi(this);
-<<<<<<< HEAD
-    ptr_account = new account(this);
-    ptr_account->show();
-=======
 
     serialPort->setPortName("COM4"); // TÄHÄN USB-PORTIN KANAVA
     serialPort->setBaudRate(QSerialPort::Baud9600); // Siirtonopeus
@@ -25,7 +22,6 @@ MainWindow::MainWindow(QWidget *parent) :
     } else {
         qDebug() << "Serial port ei avaudu";
     }
->>>>>>> main
 }
 
 
@@ -71,3 +67,4 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
     reply = cardManager->get(request);
     qDebug()<< reply->readAll();
 }
+

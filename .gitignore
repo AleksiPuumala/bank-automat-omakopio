@@ -5,3 +5,4 @@ backend/*.env
 bank-automat/bankpin/*.user
 bank-automat/bankpin/build/
 bank-automat/bankAccountMain/build/
+bank-automat/bankAccountMain/*.user

@@ -15,9 +15,6 @@ const transaction={
     },
     deleteTransaction(idtransaction, callback) {
         return db.query("DELETE FROM transaction WHERE idtransaction=?", idtransaction, callback);
-    },
-    withdraw: function (idaccount, transactionamount,callback){
-        return db.query("CALL withDrawBalance(?,?)",[idaccount, transactionamount], callback);
     }
 }
 

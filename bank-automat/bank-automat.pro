@@ -25,16 +25,15 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+
+
+
+win32: LIBS += -L$$PWD/bankAccountMain/build/debug/ -lbankAccountMain
+
+INCLUDEPATH += $$PWD/bankAccountMain
+DEPENDPATH += $$PWD/bankAccountMain
+
 win32: LIBS += -L$$PWD/bankpin/build/debug/ -lbankpin
 
 INCLUDEPATH += $$PWD/bankpin
 DEPENDPATH += $$PWD/bankpin
-
-<<<<<<< HEAD
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/bankAccountMain/build/release/ -lbankAccountMain
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/bankAccountMain/build/debug/ -lbankAccountMain
-
-INCLUDEPATH += $$PWD/bankAccountMain
-DEPENDPATH += $$PWD/bankAccountMain
-=======
->>>>>>> main

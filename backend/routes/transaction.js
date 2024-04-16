@@ -56,15 +56,5 @@ router.delete('/:idtransaction', function(request, response) {
     });
 });
 
-router.post('/withdraw', function(request, response){
-    const {idaccount, transactionamount} = req.body;
-    transaction.withdraw(idaccount, transactionamount, function(err, result){
-        if (err) {
-            response.send(err);
-        }else{
-            response.json(result);
-        }
-    });
-});
 
 module.exports = router;
