@@ -34,15 +34,11 @@ void bankPinUi::clearAndEnterHandler()
     qDebug()<<"Button name: "+name;
 
     if(name=="btnClear"){
-        qDebug()<<"clear pin";
         Number="";
         pinNumber="";
         ui->linePin->setText(Number);
     }
     else {
-        qDebug()<<pinNumber;
-        qDebug()<<cardnum;
-        qDebug()<<"jotaki";
         //QString cardnum="1234"; //väliaikainen korttinumero.
 
         QJsonObject jsonObj; //lähetettävä json paketti
