@@ -6,6 +6,7 @@ bankPinUi::bankPinUi(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::bankPinUi)
 {
+    setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
     loginNum=3;
 }

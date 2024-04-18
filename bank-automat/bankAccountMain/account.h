@@ -40,7 +40,8 @@ private:
     QString cardnumber;
     QString idaccount;
     QJsonDocument json_doc;
-
+signals:
+    void logoutSignal();
 };
 
 #endif // ACCOUNT_H

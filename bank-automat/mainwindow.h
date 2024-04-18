@@ -39,6 +39,7 @@ private:
 
 private slots:
     void loginSlot(QByteArray);
+    void logoutSlot();
 
 signals:
     void pinSignal(QString);

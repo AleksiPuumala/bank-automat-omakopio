@@ -59,7 +59,9 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
 
     ptr_account = new account(this);
     cardnumber = serialData.remove(0, 3), serialData.remove(10, 3);
-    //qDebug()<<serialData;
+    //logout signal
+    connect(ptr_account, SIGNAL(logoutSignal()),
+            this, SLOT(logoutSlot()));
 
     // Lähetetään korttinumero accountille
     connect(this , SIGNAL(cardnumSignal(QString)),
@@ -79,6 +81,12 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
     reply = cardManager->get(request);
 
     ptr_account->show();
+}
+
+void MainWindow::logoutSlot()
+{
+    cardnumber = "";
+    serialData = "";
 }
 
 

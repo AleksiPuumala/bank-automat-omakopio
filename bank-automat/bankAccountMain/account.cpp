@@ -7,9 +7,11 @@
 account::account(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::account)
+
+
 {
+    setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
-    qDebug()<<"account luotu";
 
     ui->btnNosto->hide();
     ui->btnSaldo->hide();
@@ -41,7 +43,8 @@ void account::on_btnSaldo_clicked()
 
 void account::on_btnUlos_clicked()
 {
-
+    emit logoutSignal();
+    account::close();
 }
 
 
