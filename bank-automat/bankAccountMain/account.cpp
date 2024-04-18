@@ -56,7 +56,7 @@ void account::accountSlot(QNetworkReply* reply)
     qDebug()<<"account slot ok ";
     response_data=reply->readAll();
     qDebug()<<response_data;
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     if(json_array.size()>1){
         qDebug()<<"monta tiliä";
@@ -88,15 +88,48 @@ void account::accountSlot(QNetworkReply* reply)
     }
 }
 
-
-void account::on_btnTilivalinta2_clicked()
+void account::cardnumSlot(QString incNumber)
 {
-
+    cardnumber = incNumber;
 }
-
 
 void account::on_btnTilivalinta1_clicked()
 {
+    QVariant jsonVariant = json_doc.toVariant();
+    QVariantList jsonArray = jsonVariant.toList();
 
+    QVariantMap item = jsonArray.at(0).toMap();
+
+    int id1 = item.value("idaccount").toInt();
+    idaccount = QString::number(id1);
+
+    ui->btnNosto->show();
+    ui->btnSaldo->show();
+    ui->btnTapahtumat->show();
+    ui->btnTapahtumat->show();
+    ui->labelTilivalinta->hide();
+    ui->btnTilivalinta1->hide();
+    ui->btnTilivalinta2->hide();
 }
+
+void account::on_btnTilivalinta2_clicked()
+{
+    QVariant jsonVariant = json_doc.toVariant();
+    QVariantList jsonArray = jsonVariant.toList();
+
+    QVariantMap item = jsonArray.at(0).toMap();
+
+    int id1 = item.value("idaccount").toInt();
+    idaccount = QString::number(id1);
+
+    ui->btnNosto->show();
+    ui->btnSaldo->show();
+    ui->btnTapahtumat->show();
+    ui->btnTapahtumat->show();
+    ui->labelTilivalinta->hide();
+    ui->btnTilivalinta1->hide();
+    ui->btnTilivalinta2->hide();
+}
+
+
 

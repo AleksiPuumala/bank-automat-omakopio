@@ -29,6 +29,7 @@ private slots:
     void on_btnTilivalinta1_clicked();
 
     void accountSlot(QNetworkReply*);
+    void cardnumSlot(QString);
 
 private:
     Ui::account *ui;
@@ -38,6 +39,7 @@ private:
 
     QString cardnumber;
     QString idaccount;
+    QJsonDocument json_doc;
 
 };
 

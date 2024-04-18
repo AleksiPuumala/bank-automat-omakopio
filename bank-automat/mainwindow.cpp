@@ -59,8 +59,12 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
 
     ptr_account = new account(this);
     cardnumber = serialData.remove(0, 3), serialData.remove(10, 3);
-    qDebug()<<serialData;
+    //qDebug()<<serialData;
 
+    // Lähetetään korttinumero accountille
+    connect(this , SIGNAL(cardnumSignal(QString)),
+            ptr_account, SLOT(cardnumSlot(QString)));
+    emit cardnumSignal(cardnumber);
 
     QString site_url="http://localhost:3000/cardselect/"+serialData;
     QNetworkRequest request((site_url));

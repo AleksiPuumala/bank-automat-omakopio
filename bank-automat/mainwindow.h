@@ -42,6 +42,7 @@ private slots:
 
 signals:
     void pinSignal(QString);
+    void cardnumSignal(QString);
 
 };
 
