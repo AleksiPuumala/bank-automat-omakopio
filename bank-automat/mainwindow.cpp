@@ -68,3 +68,10 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
     qDebug()<< reply->readAll();
 }
 
+
+void MainWindow::on_ohita_clicked()
+{
+    ptr_account = new account(this);
+    ptr_account->show();
+}
+

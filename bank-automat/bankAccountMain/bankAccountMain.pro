@@ -16,6 +16,7 @@ SOURCES += \
     account.cpp \
     balance.cpp \
     bankaccountmain.cpp \
+    takemoney.cpp \
     transaction.cpp \
     withdraw.cpp
 
@@ -24,6 +25,7 @@ HEADERS += \
     balance.h \
     bankAccountMain_global.h \
     bankaccountmain.h \
+    takemoney.h \
     transaction.h \
     withdraw.h
 
@@ -36,5 +38,6 @@ unix {
 FORMS += \
     account.ui \
     balance.ui \
+    takemoney.ui \
     transaction.ui \
     withdraw.ui

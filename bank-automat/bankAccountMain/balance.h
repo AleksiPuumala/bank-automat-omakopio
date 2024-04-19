@@ -1,6 +1,9 @@
 #ifndef BALANCE_H
 #define BALANCE_H
 
+#include <QtNetwork>
+#include <QNetworkAccessManager>
+#include <QJsonDocument>
 #include <QDialog>
 
 namespace Ui {
@@ -17,9 +20,17 @@ public:
 
 private slots:
     void on_btnExitBalance_clicked();
+    void balanceSlot(QNetworkReply *reply);
 
 private:
     Ui::balance *ui;
+    QString account;
+    QString amount;
+    QString limit;
+    QNetworkAccessManager *getManager;
+    QNetworkReply *reply;
+    QByteArray response_data;
+
 };
 
 #endif // BALANCE_H

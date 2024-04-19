@@ -42,3 +42,8 @@ void account::on_btnTapahtumat_clicked()
     ptr_transaction->open();
 }
 
+void account::logoutSlot()
+{
+    account::close();
+}
+
