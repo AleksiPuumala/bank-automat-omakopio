@@ -20,6 +20,8 @@ public:
     explicit account(QWidget *parent = nullptr);
     ~account();
 
+
+
 private slots:
     void on_btnNosto_clicked();
     void on_btnSaldo_clicked();
@@ -29,9 +31,10 @@ private slots:
     void on_btnTilivalinta1_clicked();
 
     void accountSlot(QNetworkReply*);
-    void cardnumSlot(QString);
+    void cardnumSlot(QString incNumber, QByteArray inctoken);
 
     void logoutSlot();
+
 
 private:
     Ui::account *ui;
@@ -39,8 +42,13 @@ private:
     QNetworkReply *reply;
     QByteArray response_data;
 
-    QString cardnumber;
-    QString idaccount;
+    QString cardnumber;     // vastaanotettu korttinumero
+    QString idaccount;      //tilin id
+    QByteArray token;       //kirjautumisesta saatu webtoken
+
+    QString acc1;           //yhdistelmäkortin valintaan käytettävät muuttujat
+    QString acc2;
+
     QJsonDocument json_doc;
 signals:
     void logoutSignal();

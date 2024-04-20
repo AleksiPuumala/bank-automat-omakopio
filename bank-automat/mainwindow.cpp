@@ -64,9 +64,9 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
             this, SLOT(logoutSlot()));
 
     // Lähetetään korttinumero accountille
-    connect(this , SIGNAL(cardnumSignal(QString)),
-            ptr_account, SLOT(cardnumSlot(QString)));
-    emit cardnumSignal(cardnumber);
+    connect(this , SIGNAL(cardnumSignal(QString,QByteArray)),
+            ptr_account, SLOT(cardnumSlot(QString,QByteArray)));
+
 
     QString site_url="http://localhost:3000/cardselect/"+serialData;
     QNetworkRequest request((site_url));
@@ -74,7 +74,7 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
 
     QByteArray token= "Bearer " + response_data;
     request.setRawHeader(QByteArray("Authorization"),(token));
-
+    emit cardnumSignal(cardnumber, token);
     cardManager = new QNetworkAccessManager(this);
     connect(cardManager, SIGNAL(finished (QNetworkReply*)), ptr_account, SLOT(accountSlot(QNetworkReply*)));
 
@@ -85,8 +85,8 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
 
 void MainWindow::logoutSlot()
 {
-    cardnumber = "";
-    serialData = "";
+    cardnumber = nullptr;
+    serialData = nullptr;
 }
 
 void MainWindow::on_ohita_clicked()

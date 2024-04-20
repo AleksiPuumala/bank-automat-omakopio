@@ -45,7 +45,7 @@ private slots:
 
 signals:
     void pinSignal(QString);
-    void cardnumSignal(QString);
+    void cardnumSignal(QString cardnumber, QByteArray token);
 
 };
 

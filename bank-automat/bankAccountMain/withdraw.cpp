@@ -22,9 +22,11 @@ void withdraw::on_btn20_clicked()
     ui->label->setText("Nosto 20€");
     amount.setNum(20);
     QJsonObject name;
-    name.insert("idaccount",account);
+
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
+
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -43,9 +45,9 @@ void withdraw::on_btn40_clicked()
     ui->label->setText("Nosto 40€");
     amount.setNum(40);
     QJsonObject name;
-    name.insert("idaccount",account);
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -63,9 +65,9 @@ void withdraw::on_btn60_clicked()
     ui->label->setText("Nosto 60€");
     amount.setNum(60);
     QJsonObject name;
-    name.insert("idaccount",account);
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -83,9 +85,9 @@ void withdraw::on_btn100_clicked()
     ui->label->setText("Nosto 100€");
     amount.setNum(100);
     QJsonObject name;
-    name.insert("idaccount",account);
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -103,9 +105,9 @@ void withdraw::on_btn200_clicked()
     ui->label->setText("Nosto 200€");
     amount.setNum(200);
     QJsonObject name;
-    name.insert("idaccount",account);
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -123,9 +125,9 @@ void withdraw::on_btn500_clicked()
     ui->label->setText("Nosto 500€");
     amount.setNum(500);
     QJsonObject name;
-    name.insert("idaccount",account);
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -151,9 +153,9 @@ void withdraw::on_btnEnter_clicked()
     ui->label->setText("Nosto ");
     int amount = ui->lineforsum->text().toInt();
     QJsonObject name;
-    name.insert("idaccount",account);
+    name.insert("idaccount",idaccount);
     name.insert("transactionamount",amount);
-    name.insert("cardnumber",cardnum);
+    name.insert("cardnumber",cardnumber);
 
     QString site_url="http://localhost:3000/withdraw";
     QNetworkRequest request((site_url));
@@ -174,6 +176,7 @@ void withdraw::on_btnExitWithdraw_clicked()
 void withdraw::withdrawSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
+    qDebug()<<response_data;
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
     qDebug()<<json_doc;
 

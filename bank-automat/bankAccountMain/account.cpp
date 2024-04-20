@@ -13,6 +13,8 @@ account::account(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
 
+
+    //  KOMMENTOI NÄMÄ JOS KÄYTÄT OHITA-PAINIKETTA - account.cpp
     ui->btnNosto->hide();
     ui->btnSaldo->hide();
     ui->btnTapahtumat->hide();
@@ -72,12 +74,10 @@ void account::accountSlot(QNetworkReply* reply)
         QVariantMap item2 = jsonArray.at(1).toMap();
 
         int id1 = item1.value("idaccount").toInt();
-        QString acc1 = QString::number(id1);
+        acc1 = QString::number(id1);
         int id2 = item2.value("idaccount").toInt();
-        QString acc2 = QString::number(id2);
+        acc2 = QString::number(id2);
 
-
-        qDebug()<< acc1;
         ui->btnTilivalinta1->setText("Tili "+acc1);
         ui->btnTilivalinta2->setText("Tili "+acc2);
         ui->labelTilivalinta->show();
@@ -85,6 +85,15 @@ void account::accountSlot(QNetworkReply* reply)
         ui->btnTilivalinta2->show();
 
     } else {
+        qDebug()<<"yksi tili";
+
+        QVariant jsonVariant = json_doc.toVariant();
+        QVariantList jsonArray = jsonVariant.toList();
+
+        QVariantMap item = jsonArray.at(0).toMap();
+
+        idaccount=QString::number(item.value("idaccount").toInt());
+        qDebug()<<"tili "+idaccount;
         ui->btnNosto->show();
         ui->btnSaldo->show();
         ui->btnTapahtumat->show();
@@ -92,21 +101,20 @@ void account::accountSlot(QNetworkReply* reply)
     }
 }
 
-void account::cardnumSlot(QString incNumber)
+void account::cardnumSlot(QString incNumber, QByteArray inctoken)
 {
     cardnumber = incNumber;
+    token = inctoken;
+    qDebug()<<"vastaanotettu token";
+    qDebug()<<token;
 }
 
 void account::on_btnTilivalinta1_clicked()
 {
-    QVariant jsonVariant = json_doc.toVariant();
-    QVariantList jsonArray = jsonVariant.toList();
 
-    QVariantMap item = jsonArray.at(0).toMap();
+    idaccount = acc1;
 
-    int id1 = item.value("idaccount").toInt();
-    idaccount = QString::number(id1);
-
+    qDebug()<<"tili "+idaccount;
     ui->btnNosto->show();
     ui->btnSaldo->show();
     ui->btnTapahtumat->show();
@@ -118,14 +126,10 @@ void account::on_btnTilivalinta1_clicked()
 
 void account::on_btnTilivalinta2_clicked()
 {
-    QVariant jsonVariant = json_doc.toVariant();
-    QVariantList jsonArray = jsonVariant.toList();
 
-    QVariantMap item = jsonArray.at(0).toMap();
+    idaccount = acc2;
 
-    int id1 = item.value("idaccount").toInt();
-    idaccount = QString::number(id1);
-
+    qDebug()<<"tili "+idaccount;
     ui->btnNosto->show();
     ui->btnSaldo->show();
     ui->btnTapahtumat->show();
@@ -139,5 +143,6 @@ void account::logoutSlot()
 {
     account::close();
 }
+
 
 
