@@ -41,6 +41,8 @@ private:
 private slots:
     void loginSlot(QByteArray);
 
+    void on_ohita_clicked();
+
 signals:
     void pinSignal(QString);
 

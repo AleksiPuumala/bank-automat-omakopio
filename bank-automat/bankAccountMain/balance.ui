@@ -16,9 +16,9 @@
   <widget class="QLabel" name="label">
    <property name="geometry">
     <rect>
-     <x>220</x>
-     <y>70</y>
-     <width>81</width>
+     <x>10</x>
+     <y>10</y>
+     <width>491</width>
      <height>61</height>
     </rect>
    </property>
@@ -29,6 +29,9 @@
    </property>
    <property name="text">
     <string>Saldo</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
    </property>
   </widget>
   <widget class="QPushButton" name="btnExitBalance">
@@ -47,6 +50,16 @@
    </property>
    <property name="text">
     <string>Poistu</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit">
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>70</y>
+     <width>491</width>
+     <height>161</height>
+    </rect>
    </property>
   </widget>
  </widget>

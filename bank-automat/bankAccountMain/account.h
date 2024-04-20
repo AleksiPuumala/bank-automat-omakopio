@@ -26,6 +26,8 @@ private slots:
 
     void on_btnTapahtumat_clicked();
 
+    void logoutSlot();
+
 private:
     Ui::account *ui;
     transaction *ptr_transaction;

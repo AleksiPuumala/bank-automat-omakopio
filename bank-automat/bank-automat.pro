@@ -28,12 +28,14 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 
 
-win32: LIBS += -L$$PWD/bankAccountMain/build/debug/ -lbankAccountMain
 
-INCLUDEPATH += $$PWD/bankAccountMain
-DEPENDPATH += $$PWD/bankAccountMain
 
 win32: LIBS += -L$$PWD/bankpin/build/debug/ -lbankpin
 
 INCLUDEPATH += $$PWD/bankpin
 DEPENDPATH += $$PWD/bankpin
+
+win32: LIBS += -L$$PWD/bankAccountMain/build/debug/ -lbankAccountMain
+
+INCLUDEPATH += $$PWD/bankAccountMain
+DEPENDPATH += $$PWD/bankAccountMain
