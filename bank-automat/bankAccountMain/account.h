@@ -31,6 +31,8 @@ private slots:
     void accountSlot(QNetworkReply*);
     void cardnumSlot(QString);
 
+    void logoutSlot();
+
 private:
     Ui::account *ui;
     transaction *ptr_transaction;

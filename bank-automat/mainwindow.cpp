@@ -89,6 +89,10 @@ void MainWindow::logoutSlot()
     serialData = "";
 }
 
-
+void MainWindow::on_ohita_clicked()
+{
+    ptr_account = new account(this);
+    ptr_account->show();
+}
 
 

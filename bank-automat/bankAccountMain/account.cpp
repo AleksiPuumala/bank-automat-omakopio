@@ -54,6 +54,7 @@ void account::on_btnTapahtumat_clicked()
     ptr_transaction->open();
 }
 
+
 void account::accountSlot(QNetworkReply* reply)
 {
     qDebug()<<"account slot ok ";
@@ -134,5 +135,9 @@ void account::on_btnTilivalinta2_clicked()
     ui->btnTilivalinta2->hide();
 }
 
+void account::logoutSlot()
+{
+    account::close();
+}
 
 

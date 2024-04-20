@@ -51,7 +51,7 @@ void bankPinUi::clearAndEnterHandler()
         request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
         loginManager = new QNetworkAccessManager(this);
-        connect(loginManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
+        connect(loginManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(loginSlot(QNetworkReply*)));
 
         reply = loginManager->post(request, QJsonDocument(jsonObj).toJson());
     }
