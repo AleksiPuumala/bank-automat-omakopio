@@ -1,4 +1,6 @@
--- MySQL dump 10.13  Distrib 8.0.34, for Win64 (x86_64)
+CREATE DATABASE  IF NOT EXISTS `bank_automat` /*!40100 DEFAULT CHARACTER SET utf8mb3 */ /*!80016 DEFAULT ENCRYPTION='N' */;
+USE `bank_automat`;
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: bank_automat
 -- ------------------------------------------------------
@@ -27,7 +29,7 @@ CREATE TABLE `account` (
   `balance` decimal(10,2) NOT NULL,
   `creditlimit` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idaccount`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,20.00,50.00),(2,25.00,55.00);
+INSERT INTO `account` VALUES (1,500.00,50.00),(2,25.00,55.00),(3,20.00,0.00),(4,60.00,0.00);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -61,7 +63,7 @@ CREATE TABLE `card` (
 
 LOCK TABLES `card` WRITE;
 /*!40000 ALTER TABLE `card` DISABLE KEYS */;
-INSERT INTO `card` VALUES ('$2a$10$lBj.JuN5jS.JiceH1qXWoemum8uAQjmyB7gCWoE2YO35ZaMMFlHJG','credit','1234');
+INSERT INTO `card` VALUES ('$2a$10$XtkR7xyoOi7suUqIp5881.86D0EIkhrK66WBjBT3NshhCddetsMTi','credit','0500CB33C7'),('$2a$10$faEdMaKYPWwXAhUyqpZcsePeGrsLJT5s2o4z2nBdNC61EHeUomikW','debit','06000620D0'),('$2a$10$HB6eoB68NwCeIKdFeLR6UOUI3hTHvzi3Efc353YE6hgM8r6OBCQje','debit','060006235F'),('$2a$10$lBj.JuN5jS.JiceH1qXWoemum8uAQjmyB7gCWoE2YO35ZaMMFlHJG','credit','1234');
 /*!40000 ALTER TABLE `card` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -81,7 +83,7 @@ CREATE TABLE `cardtype` (
   KEY `cardnum_idx` (`cardnumber`),
   CONSTRAINT `cardnum` FOREIGN KEY (`cardnumber`) REFERENCES `card` (`cardnumber`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `idaccount` FOREIGN KEY (`idaccount`) REFERENCES `account` (`idaccount`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -90,6 +92,7 @@ CREATE TABLE `cardtype` (
 
 LOCK TABLES `cardtype` WRITE;
 /*!40000 ALTER TABLE `cardtype` DISABLE KEYS */;
+INSERT INTO `cardtype` VALUES (1,1,'0500CB33C7'),(2,2,'0500CB33C7'),(3,3,'060006235F'),(4,4,'06000620D0');
 /*!40000 ALTER TABLE `cardtype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,7 +139,7 @@ CREATE TABLE `transaction` (
   PRIMARY KEY (`idtransaction`),
   KEY `acc_idx` (`idaccount`),
   CONSTRAINT `acc` FOREIGN KEY (`idaccount`) REFERENCES `account` (`idaccount`) ON DELETE RESTRICT ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -145,6 +148,7 @@ CREATE TABLE `transaction` (
 
 LOCK TABLES `transaction` WRITE;
 /*!40000 ALTER TABLE `transaction` DISABLE KEYS */;
+INSERT INTO `transaction` VALUES (1,'2024-04-20 13:51:43',20.00,'withdraw',2,'0500CB33C7');
 /*!40000 ALTER TABLE `transaction` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,4 +187,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-02 14:00:46
+-- Dump completed on 2024-04-20 15:30:22
