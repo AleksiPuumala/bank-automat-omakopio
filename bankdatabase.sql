@@ -29,7 +29,7 @@ CREATE TABLE `account` (
   `balance` decimal(10,2) NOT NULL,
   `creditlimit` decimal(10,2) NOT NULL,
   PRIMARY KEY (`idaccount`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,500.00,50.00),(2,25.00,55.00),(3,20.00,0.00),(4,60.00,0.00);
+INSERT INTO `account` VALUES (1,500.00,50.00),(2,25.00,55.00),(3,20.00,0.00),(4,60.00,0.00),(5,1000.00,100.00);
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -83,7 +83,7 @@ CREATE TABLE `cardtype` (
   KEY `cardnum_idx` (`cardnumber`),
   CONSTRAINT `cardnum` FOREIGN KEY (`cardnumber`) REFERENCES `card` (`cardnumber`) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT `idaccount` FOREIGN KEY (`idaccount`) REFERENCES `account` (`idaccount`) ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +92,7 @@ CREATE TABLE `cardtype` (
 
 LOCK TABLES `cardtype` WRITE;
 /*!40000 ALTER TABLE `cardtype` DISABLE KEYS */;
-INSERT INTO `cardtype` VALUES (1,1,'0500CB33C7'),(2,2,'0500CB33C7'),(3,3,'060006235F'),(4,4,'06000620D0');
+INSERT INTO `cardtype` VALUES (1,1,'0500CB33C7'),(2,2,'0500CB33C7'),(3,3,'060006235F'),(4,4,'06000620D0'),(5,5,'1234');
 /*!40000 ALTER TABLE `cardtype` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -187,4 +187,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-20 15:30:22
+-- Dump completed on 2024-04-20 15:37:34
