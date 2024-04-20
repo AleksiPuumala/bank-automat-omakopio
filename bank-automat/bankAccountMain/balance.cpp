@@ -6,7 +6,8 @@ balance::balance(QWidget *parent)
     , ui(new Ui::balance)
 {
     ui->setupUi(this);
-    QString site_url="http://localhost:3000/account";
+    QString idaccount = "1";
+    QString site_url="http://localhost:3000/account/"+idaccount;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 

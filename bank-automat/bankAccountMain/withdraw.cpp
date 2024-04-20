@@ -189,7 +189,7 @@ void withdraw::withdrawSlot(QNetworkReply *reply)
         box.exec();
     }else if(strJson=="[{\"Nosto suoritettu\":\"Nosto suoritettu\"}]"){
         ptr_takemoney = new takemoney(this);
-
+        connect(ptr_takemoney, SIGNAL(logoutSignal()), this, SLOT(logoutSlot()));
         ptr_takemoney->show();
 
 
@@ -197,6 +197,11 @@ void withdraw::withdrawSlot(QNetworkReply *reply)
 
     reply->deleteLater();
 
+}
+
+void withdraw::logoutSlot()
+{
+    ptr_takemoney->close();
 }
 
 

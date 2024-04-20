@@ -10,7 +10,7 @@ takemoney::takemoney(QWidget *parent)
 
     QTimer *timer = new QTimer(this);
     connect(timer,SIGNAL(timeout()),this,SLOT(logoutSlot()));
-    timer->start(50);
+    timer->start(5000);
 }
 
 takemoney::~takemoney()

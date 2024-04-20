@@ -31,7 +31,7 @@ private slots:
     void on_btnExitWithdraw_clicked();
 
     void withdrawSlot(QNetworkReply *reply);
-
+    void logoutSlot();
 
     void on_btnEnter_clicked();
 
