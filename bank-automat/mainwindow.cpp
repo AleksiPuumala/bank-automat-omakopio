@@ -1,16 +1,16 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "account.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    serialPort(new QSerialPort(this)),
-    ptr_pinui(new bankPinUi(this))
+    serialPort(new QSerialPort(this))
 
 {
     ui->setupUi(this);
 
-    serialPort->setPortName("COM4"); // TÄHÄN USB-PORTIN KANAVA
+    serialPort->setPortName("COM5"); // TÄHÄN USB-PORTIN KANAVA
     serialPort->setBaudRate(QSerialPort::Baud9600); // Siirtonopeus
 
     // Kun sarjaporttiin tulee uutta dataa, kutsu readSerialData
@@ -22,6 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
     } else {
         qDebug() << "Serial port ei avaudu";
     }
+    serialData = "";
 }
 
 
@@ -35,43 +36,63 @@ MainWindow::~MainWindow()
 
 void MainWindow::readSerialData()
 {
-    // Tallenna sarjaportin data QStringiin
-    serialData = QString(serialPort->readAll());
-    ptr_pinui = new bankPinUi(this);
-    connect(ptr_pinui, SIGNAL(loginSignal(QByteArray)),
-            this, SLOT (loginSlot(QByteArray)));
-    connect(this, SIGNAL (pinSignal(QString)),
-            ptr_pinui, SLOT(cardNum(QString)));
+    // Tallenna sarjaportin data QStringiin serialData
+    // Jos serialData sisältää korttinumeron -> ei avata uusia pin olioita
+    if(serialData.size()<=0){
+        serialData = QString(serialPort->readAll());
+        ptr_pinui = new bankPinUi(this);
+        connect(ptr_pinui, SIGNAL(loginSignal(QByteArray)),
+                this, SLOT (loginSlot(QByteArray)));
+        connect(this, SIGNAL (pinSignal(QString)),
+                ptr_pinui, SLOT(cardNum(QString)));
 
-    emit pinSignal(serialData);
-    ptr_pinui->show();
+        emit pinSignal(serialData);
+        ptr_pinui->show();
+    }
 
 }
 
 void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero ja webtoken
 {
+    ptr_pinui->close();
     qDebug()<<"mainwindow slot ok";
-    qDebug()<< response_data;
+
+    ptr_account = new account(this);
+    cardnumber = serialData.remove(0, 3), serialData.remove(10, 3);
+    //logout signal
+    connect(ptr_account, SIGNAL(logoutSignal()),
+            this, SLOT(logoutSlot()));
+
+    // Lähetetään korttinumero accountille
+    connect(this , SIGNAL(cardnumSignal(QString,QByteArray)),
+            ptr_account, SLOT(cardnumSlot(QString,QByteArray)));
 
 
-        // Testaa toimiiko
-
-    QString site_url="http://localhost:3000/cardselect";
+    QString site_url="http://localhost:3000/cardselect/"+serialData;
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-    QString token= "Bearer " + response_data;
-    request.setRawHeader("Authorization", token.toLocal8Bit());
+
+    QByteArray token= "Bearer " + response_data;
+    request.setRawHeader(QByteArray("Authorization"),(token));
+    emit cardnumSignal(cardnumber, token);
     cardManager = new QNetworkAccessManager(this);
-    connect(cardManager, SIGNAL(finished (QNetworkReply*)), this, SLOT(accountSlot(QNetworkReply*)));
+    connect(cardManager, SIGNAL(finished (QNetworkReply*)), ptr_account, SLOT(accountSlot(QNetworkReply*)));
 
     reply = cardManager->get(request);
-    qDebug()<< reply->readAll();
+
+    ptr_account->show();
 }
 
+void MainWindow::logoutSlot()
+{
+    cardnumber = nullptr;
+    serialData = nullptr;
+}
 
 void MainWindow::on_ohita_clicked()
 {
     ptr_account = new account(this);
     ptr_account->show();
 }
+
 

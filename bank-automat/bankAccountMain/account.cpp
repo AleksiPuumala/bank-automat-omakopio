@@ -7,8 +7,21 @@
 account::account(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::account)
+
+
 {
+    setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
+
+
+    //  KOMMENTOI NÄMÄ JOS KÄYTÄT OHITA-PAINIKETTA - account.cpp
+    ui->btnNosto->hide();
+    ui->btnSaldo->hide();
+    ui->btnTapahtumat->hide();
+    ui->btnTapahtumat_2->hide();
+    ui->btnTilivalinta1->hide();
+    ui->btnTilivalinta2->hide();
+    ui->labelTilivalinta->hide();
 }
 
 account::~account()
@@ -32,7 +45,8 @@ void account::on_btnSaldo_clicked()
 
 void account::on_btnUlos_clicked()
 {
-
+    emit logoutSignal();
+    account::close();
 }
 
 
@@ -42,8 +56,93 @@ void account::on_btnTapahtumat_clicked()
     ptr_transaction->open();
 }
 
+
+void account::accountSlot(QNetworkReply* reply)
+{
+    qDebug()<<"account slot ok ";
+    response_data=reply->readAll();
+    qDebug()<<response_data;
+    json_doc = QJsonDocument::fromJson(response_data);
+    QJsonArray json_array = json_doc.array();
+    if(json_array.size()>1){
+        qDebug()<<"monta tiliä";
+
+        QVariant jsonVariant = json_doc.toVariant();
+        QVariantList jsonArray = jsonVariant.toList();
+
+        QVariantMap item1 = jsonArray.at(0).toMap();
+        QVariantMap item2 = jsonArray.at(1).toMap();
+
+        int id1 = item1.value("idaccount").toInt();
+        acc1 = QString::number(id1);
+        int id2 = item2.value("idaccount").toInt();
+        acc2 = QString::number(id2);
+
+        ui->btnTilivalinta1->setText("Tili "+acc1);
+        ui->btnTilivalinta2->setText("Tili "+acc2);
+        ui->labelTilivalinta->show();
+        ui->btnTilivalinta1->show();
+        ui->btnTilivalinta2->show();
+
+    } else {
+        qDebug()<<"yksi tili";
+
+        QVariant jsonVariant = json_doc.toVariant();
+        QVariantList jsonArray = jsonVariant.toList();
+
+        QVariantMap item = jsonArray.at(0).toMap();
+
+        idaccount=QString::number(item.value("idaccount").toInt());
+        qDebug()<<"tili "+idaccount;
+        ui->btnNosto->show();
+        ui->btnSaldo->show();
+        ui->btnTapahtumat->show();
+        ui->btnTapahtumat->show();
+    }
+}
+
+void account::cardnumSlot(QString incNumber, QByteArray inctoken)
+{
+    cardnumber = incNumber;
+    token = inctoken;
+    qDebug()<<"vastaanotettu token";
+    qDebug()<<token;
+}
+
+void account::on_btnTilivalinta1_clicked()
+{
+
+    idaccount = acc1;
+
+    qDebug()<<"tili "+idaccount;
+    ui->btnNosto->show();
+    ui->btnSaldo->show();
+    ui->btnTapahtumat->show();
+    ui->btnTapahtumat->show();
+    ui->labelTilivalinta->hide();
+    ui->btnTilivalinta1->hide();
+    ui->btnTilivalinta2->hide();
+}
+
+void account::on_btnTilivalinta2_clicked()
+{
+
+    idaccount = acc2;
+
+    qDebug()<<"tili "+idaccount;
+    ui->btnNosto->show();
+    ui->btnSaldo->show();
+    ui->btnTapahtumat->show();
+    ui->btnTapahtumat->show();
+    ui->labelTilivalinta->hide();
+    ui->btnTilivalinta1->hide();
+    ui->btnTilivalinta2->hide();
+}
+
 void account::logoutSlot()
 {
     account::close();
 }
+
+
 
