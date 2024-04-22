@@ -23,28 +23,29 @@ public:
 
 private slots:
     void readSerialData();
-    //void selectCreditCard();
-    //void selectDebitCard();
 
 private:
     Ui::MainWindow *ui;
     QSerialPort *serialPort;
     QString serialData; // Tähän tallennetaan serialportin data
-    bankPinUi * ptr_pinui;
 
+    bankPinUi * ptr_pinui;
     account * ptr_account;
 
+    QString cardnumber;
 
     QNetworkAccessManager *cardManager;
     QNetworkReply *reply;
 
 private slots:
     void loginSlot(QByteArray);
+    void logoutSlot();
 
     void on_ohita_clicked();
 
 signals:
     void pinSignal(QString);
+    void cardnumSignal(QString cardnumber, QByteArray token);
 
 };
 

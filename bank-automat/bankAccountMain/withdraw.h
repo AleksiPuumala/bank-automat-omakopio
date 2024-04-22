@@ -7,6 +7,7 @@
 #include <QDialog>
 #include "takemoney.h"
 #include <QTimer>
+#include "account.h"
 
 namespace Ui {
 class withdraw;
@@ -37,9 +38,10 @@ private slots:
 
 private:
     Ui::withdraw *ui;
-    QString account ="1";
+
     QString amount;
-    QString cardnum ="3";
+    QString cardnumber;
+    QString idaccount;
 
     QNetworkAccessManager *withdrawManager;
     QNetworkReply *reply;

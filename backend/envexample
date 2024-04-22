@@ -1,0 +1,2 @@
+MySQL_DB="mysql://user:pass@127.0.0.1:3306/bank_automat"
+MY_TOKEN=l7sEgqELH5HeM9muXrHOqL7ih47iSUVgfhUP5+OPTx5xu9uumAJxd560AUvh35FGN1FsMgt3o0ZTjY8CIj7yEw==
