@@ -29,7 +29,7 @@ void balance::balanceSlot(QNetworkReply *reply)
     QJsonObject jsonObject = jsonResponse.object();
 
     QString saldoInfo;
-    saldoInfo += "Tilin ID: " +jsonObject["idaccount"].toString() + "\n";
+    saldoInfo += "Tilin ID: " + QString::number(jsonObject["idaccount"].toInt()) + "\n";
     saldoInfo += "Saldo: " + QString::number(jsonObject["balance"].toInt()) + "\n";
     saldoInfo += "Luottoraja: " + QString::number(jsonObject["creditlimit"].toInt()) + "\n";
 
