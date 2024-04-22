@@ -37,6 +37,8 @@ private slots:
     void loginSlot(QNetworkReply *reply);
     void cardNum(QString);
 
+    void on_btnReturn_clicked();
+
 private:
     Ui::bankPinUi *ui;
     QString Number;
@@ -52,6 +54,7 @@ private:
     void clearAndEnterHandler();
 signals:
     void loginSignal(QByteArray);
+    void logoutPinSignal();
 };
 
 #endif // BANKPINUI_H

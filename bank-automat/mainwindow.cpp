@@ -41,6 +41,10 @@ void MainWindow::readSerialData()
     if(serialData.size()<=0){
         serialData = QString(serialPort->readAll());
         ptr_pinui = new bankPinUi(this);
+
+        //pinui logout signaali
+        connect(ptr_pinui, SIGNAL(logoutPinSignal()), this, SLOT(logoutSlot()));
+
         connect(ptr_pinui, SIGNAL(loginSignal(QByteArray)),
                 this, SLOT (loginSlot(QByteArray)));
         connect(this, SIGNAL (pinSignal(QString)),
@@ -59,7 +63,7 @@ void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero j
 
     ptr_account = new account(this);
     cardnumber = serialData.remove(0, 3), serialData.remove(10, 3);
-    //logout signal
+    //logout signal accountille
     connect(ptr_account, SIGNAL(logoutSignal()),
             this, SLOT(logoutSlot()));
 
