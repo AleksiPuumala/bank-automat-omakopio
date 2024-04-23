@@ -38,10 +38,19 @@ void balance::balanceSlot(QNetworkReply *reply)
     response_data=reply->readAll();
     qDebug()<<response_data;
 
-    QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
+    QJsonDocument json_doc=QJsonDocument::fromJson(response_data);
     //QJsonArray accountsArray = json_doc.array();
-    QJsonObject jsonobj = json_doc.object();
-    qDebug()<<jsonobj["balance"].isDouble();
+
+        QJsonObject json_obj = json_doc.object();
+    QString saldoInfo;
+    saldoInfo +="Saldo: "+ json_obj["balance"].toString();
+    saldoInfo +="Luottoraja: "+ json_obj["creditlimit"].toString();
+    saldoInfo +="Tilinumero: "+accountID;
+
+    ui->textEdit->setText(saldoInfo);
+       // book+=QString::number(json_obj["id_book"].toInt())+", "+json_obj["name"].toString()+", "+json_obj["author"].toString()+"\r";
+    }
+
     //double balancenum =
     //qDebug()<<balancenum;
 
@@ -64,5 +73,5 @@ void balance::balanceSlot(QNetworkReply *reply)
 
 
 
-}
+
 
