@@ -18,10 +18,12 @@ account::account(QWidget *parent)
     ui->btnNosto->hide();
     ui->btnSaldo->hide();
     ui->btnTapahtumat->hide();
-    ui->btnTapahtumat_2->hide();
     ui->btnTilivalinta1->hide();
     ui->btnTilivalinta2->hide();
     ui->labelTilivalinta->hide();
+    ui->btnTilivalinta1->hide();
+    ui->btnTilivalinta2->hide();
+
 }
 
 account::~account()
@@ -32,6 +34,9 @@ account::~account()
 void account::on_btnNosto_clicked()
 {
     withdraw *ptr_withdraw=new withdraw(this);
+    connect(this, SIGNAL(withdrawSignal(QString,QString,QByteArray)),
+            ptr_withdraw, SLOT(withdrawDataSlot(QString,QString,QByteArray)));
+    emit withdrawSignal(idaccount,cardnumber,token);
     ptr_withdraw->open();
 }
 
@@ -39,6 +44,9 @@ void account::on_btnNosto_clicked()
 void account::on_btnSaldo_clicked()
 {
     balance *ptr_balance=new balance(this);
+    connect(this, SIGNAL(balanceSignal(QString,QByteArray)),
+            ptr_balance, SLOT(balanceDataSlot(QString,QByteArray)));
+    emit balanceSignal(idaccount,token);
     ptr_balance->open();
 }
 

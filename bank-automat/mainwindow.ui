@@ -17,8 +17,8 @@
    <widget class="QLineEdit" name="infoTeksti">
     <property name="geometry">
      <rect>
-      <x>170</x>
-      <y>40</y>
+      <x>200</x>
+      <y>180</y>
       <width>401</width>
       <height>131</height>
      </rect>
@@ -33,45 +33,6 @@
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="debit">
-    <property name="geometry">
-     <rect>
-      <x>220</x>
-      <y>210</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Debit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="credit">
-    <property name="geometry">
-     <rect>
-      <x>410</x>
-      <y>210</y>
-      <width>75</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Credit</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="ohita">
-    <property name="geometry">
-     <rect>
-      <x>230</x>
-      <y>320</y>
-      <width>291</width>
-      <height>151</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Ohita</string>
     </property>
    </widget>
   </widget>
