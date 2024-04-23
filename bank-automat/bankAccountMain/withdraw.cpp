@@ -32,6 +32,7 @@ void withdraw::on_btn20_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
@@ -53,6 +54,7 @@ void withdraw::on_btn40_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
@@ -73,6 +75,7 @@ void withdraw::on_btn60_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
@@ -93,6 +96,7 @@ void withdraw::on_btn100_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
@@ -113,6 +117,7 @@ void withdraw::on_btn200_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
@@ -133,6 +138,7 @@ void withdraw::on_btn500_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
@@ -161,10 +167,18 @@ void withdraw::on_btnEnter_clicked()
     QNetworkRequest request((site_url));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
+    request.setRawHeader(QByteArray("Authorization"),(token));
     withdrawManager = new QNetworkAccessManager(this);
     connect(withdrawManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(withdrawSlot(QNetworkReply*)));
 
     reply = withdrawManager->put(request, QJsonDocument(name).toJson());
+}
+
+void withdraw::withdrawDataSlot(QString account, QString cardnum, QByteArray inctoken)
+{
+    idaccount = account;
+    cardnumber = cardnum;
+    token = inctoken;
 }
 
 

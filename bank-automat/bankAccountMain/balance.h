@@ -18,15 +18,18 @@ public:
     explicit balance(QWidget *parent = nullptr);
     ~balance();
 
+    QString accountID;
+    QByteArray token;
+
 private slots:
     void on_btnExitBalance_clicked();
+
+    void balanceDataSlot(QString account, QByteArray intoken);
     void balanceSlot(QNetworkReply *reply);
 
 private:
     Ui::balance *ui;
-    QString account;
-    QString amount;
-    QString limit;
+
     QNetworkAccessManager *getManager;
     QNetworkReply *reply;
     QByteArray response_data;
