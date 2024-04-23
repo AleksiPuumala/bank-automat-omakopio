@@ -16,8 +16,8 @@
   <widget class="QWidget" name="verticalLayoutWidget">
    <property name="geometry">
     <rect>
-     <x>300</x>
-     <y>140</y>
+     <x>320</x>
+     <y>30</y>
      <width>281</width>
      <height>451</height>
     </rect>
@@ -369,6 +369,24 @@
      </layout>
     </item>
    </layout>
+  </widget>
+  <widget class="QPushButton" name="btnReturn">
+   <property name="geometry">
+    <rect>
+     <x>430</x>
+     <y>490</y>
+     <width>171</width>
+     <height>51</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Palaa alkuun</string>
+   </property>
   </widget>
  </widget>
  <resources/>
