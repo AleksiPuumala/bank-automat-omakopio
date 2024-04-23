@@ -9,6 +9,7 @@ bankPinUi::bankPinUi(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
     loginNum=3;
+
 }
 
 bankPinUi::~bankPinUi()
@@ -163,4 +164,11 @@ void bankPinUi::on_btnClear_clicked(){
 
 
 
+
+
+void bankPinUi::on_btnReturn_clicked()
+{
+    emit logoutPinSignal();
+    close();
+}
 
