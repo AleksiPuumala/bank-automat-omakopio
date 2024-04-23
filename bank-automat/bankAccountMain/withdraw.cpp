@@ -19,7 +19,6 @@ withdraw::~withdraw()
 
 void withdraw::on_btn20_clicked()
 {
-    ui->label->setText("Nosto 20€");
     amount.setNum(20);
     QJsonObject name;
 
@@ -43,7 +42,6 @@ void withdraw::on_btn20_clicked()
 
 void withdraw::on_btn40_clicked()
 {
-    ui->label->setText("Nosto 40€");
     amount.setNum(40);
     QJsonObject name;
     name.insert("idaccount",idaccount);
@@ -64,7 +62,6 @@ void withdraw::on_btn40_clicked()
 
 void withdraw::on_btn60_clicked()
 {
-    ui->label->setText("Nosto 60€");
     amount.setNum(60);
     QJsonObject name;
     name.insert("idaccount",idaccount);
@@ -85,7 +82,6 @@ void withdraw::on_btn60_clicked()
 
 void withdraw::on_btn100_clicked()
 {
-    ui->label->setText("Nosto 100€");
     amount.setNum(100);
     QJsonObject name;
     name.insert("idaccount",idaccount);
@@ -106,7 +102,6 @@ void withdraw::on_btn100_clicked()
 
 void withdraw::on_btn200_clicked()
 {
-    ui->label->setText("Nosto 200€");
     amount.setNum(200);
     QJsonObject name;
     name.insert("idaccount",idaccount);
@@ -127,7 +122,6 @@ void withdraw::on_btn200_clicked()
 
 void withdraw::on_btn500_clicked()
 {
-    ui->label->setText("Nosto 500€");
     amount.setNum(500);
     QJsonObject name;
     name.insert("idaccount",idaccount);
@@ -156,7 +150,6 @@ void withdraw::on_btnOther_clicked()
 
 void withdraw::on_btnEnter_clicked()
 {
-    ui->label->setText("Nosto ");
     int amount = ui->lineforsum->text().toInt();
     QJsonObject name;
     name.insert("idaccount",idaccount);
