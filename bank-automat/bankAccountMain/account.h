@@ -52,6 +52,8 @@ private:
     QJsonDocument json_doc;
 signals:
     void logoutSignal();
+    void withdrawSignal(QString idaccount, QString cardnumber, QByteArray token);
+    void balanceSignal(QString idaccount, QByteArray token);
 };
 
 #endif // ACCOUNT_H

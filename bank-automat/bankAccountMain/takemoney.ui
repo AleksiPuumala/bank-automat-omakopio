@@ -28,7 +28,7 @@
     </rect>
    </property>
    <property name="text">
-    <string>Ota rahat :)</string>
+    <string>Ota rahat</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>

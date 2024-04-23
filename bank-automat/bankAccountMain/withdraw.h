@@ -7,7 +7,6 @@
 #include <QDialog>
 #include "takemoney.h"
 #include <QTimer>
-#include "account.h"
 
 namespace Ui {
 class withdraw;
@@ -36,6 +35,8 @@ private slots:
 
     void on_btnEnter_clicked();
 
+    void withdrawDataSlot(QString account, QString cardnum, QByteArray inctoken);
+
 private:
     Ui::withdraw *ui;
 
@@ -46,6 +47,8 @@ private:
     QNetworkAccessManager *withdrawManager;
     QNetworkReply *reply;
     QByteArray response_data;
+
+    QByteArray token;
 
     takemoney * ptr_takemoney;
 };

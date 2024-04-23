@@ -6,15 +6,6 @@ balance::balance(QWidget *parent)
     , ui(new Ui::balance)
 {
     ui->setupUi(this);
-    QString idaccount = "1";
-    QString site_url="http://localhost:3000/account/"+idaccount;
-    QNetworkRequest request((site_url));
-    request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
-
-    getManager = new QNetworkAccessManager(this);
-    connect(getManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(balanceSlot(QNetworkReply*)));
-
-    reply = getManager->get(request);
 }
 
 balance::~balance()
@@ -22,26 +13,34 @@ balance::~balance()
     delete ui;
 }
 
-void balance::balanceSlot(QNetworkReply *reply)
-{
-    response_data=reply->readAll();
-    QJsonDocument jsonResponse = QJsonDocument::fromJson(response_data);
-    QJsonObject jsonObject = jsonResponse.object();
-
-    QString saldoInfo;
-    saldoInfo += "Tilin ID: " +jsonObject["idaccount"].toString() + "\n";
-    saldoInfo += "Saldo: " + QString::number(jsonObject["balance"].toInt()) + "\n";
-    saldoInfo += "Luottoraja: " + QString::number(jsonObject["creditlimit"].toInt()) + "\n";
-
-    ui->lineEdit->setText(saldoInfo);
-
-    reply->deleteLater();
-}
-
 void balance::on_btnExitBalance_clicked()
 {
     close();
 }
 
+void balance::balanceDataSlot(QString account, QByteArray intoken)
+{
+    accountID = account;
+    token = intoken;
 
+    QString site_url="http://localhost:3000/account/" + accountID;
+    QNetworkRequest request((site_url));
+    request.setRawHeader(QByteArray("Authorization"), (token));
 
+    getManager = new QNetworkAccessManager(this);
+    connect(getManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(balanceSlot(QNetworkReply*)));
+
+    reply = getManager->get(request);
+}
+
+void balance::balanceSlot(QNetworkReply *reply)
+{
+    response_data=reply->readAll();
+
+    QJsonDocument json_doc=QJsonDocument::fromJson(response_data);
+    QJsonObject json_obj = json_doc.object();
+
+        ui->labelAccount->setText(accountID);
+        ui->labelBalance->setText(json_obj["balance"].toString());
+        ui->labelCredit->setText(json_obj["creditlimit"].toString());
+    }
