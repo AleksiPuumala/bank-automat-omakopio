@@ -13,8 +13,6 @@ account::account(QWidget *parent)
     setAttribute(Qt::WA_DeleteOnClose, true);
     ui->setupUi(this);
 
-
-    //  KOMMENTOI NÄMÄ JOS KÄYTÄT OHITA-PAINIKETTA - account.cpp
     ui->btnNosto->hide();
     ui->btnSaldo->hide();
     ui->btnTapahtumat->hide();
@@ -77,13 +75,11 @@ void account::on_btnTapahtumat_clicked()
 
 void account::accountSlot(QNetworkReply* reply)
 {
-    qDebug()<<"account slot ok ";
     response_data=reply->readAll();
     qDebug()<<response_data;
     json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     if(json_array.size()>1){
-        qDebug()<<"monta tiliä";
 
         QVariant jsonVariant = json_doc.toVariant();
         QVariantList jsonArray = jsonVariant.toList();
@@ -103,7 +99,6 @@ void account::accountSlot(QNetworkReply* reply)
         ui->btnTilivalinta2->show();
 
     } else {
-        qDebug()<<"yksi tili";
 
         QVariant jsonVariant = json_doc.toVariant();
         QVariantList jsonArray = jsonVariant.toList();
@@ -111,7 +106,6 @@ void account::accountSlot(QNetworkReply* reply)
         QVariantMap item = jsonArray.at(0).toMap();
 
         idaccount=QString::number(item.value("idaccount").toInt());
-        qDebug()<<"tili "+idaccount;
         ui->btnNosto->show();
         ui->btnSaldo->show();
         ui->btnTapahtumat->show();
@@ -123,8 +117,6 @@ void account::cardnumSlot(QString incNumber, QByteArray inctoken)
 {
     cardnumber = incNumber;
     token = inctoken;
-    qDebug()<<"vastaanotettu token";
-    qDebug()<<token;
 }
 
 void account::on_btnTilivalinta1_clicked()
@@ -132,7 +124,6 @@ void account::on_btnTilivalinta1_clicked()
 
     idaccount = acc1;
 
-    qDebug()<<"tili "+idaccount;
     ui->btnNosto->show();
     ui->btnSaldo->show();
     ui->btnTapahtumat->show();
@@ -147,7 +138,6 @@ void account::on_btnTilivalinta2_clicked()
 
     idaccount = acc2;
 
-    qDebug()<<"tili "+idaccount;
     ui->btnNosto->show();
     ui->btnSaldo->show();
     ui->btnTapahtumat->show();

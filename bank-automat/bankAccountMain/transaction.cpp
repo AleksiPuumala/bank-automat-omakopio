@@ -35,8 +35,7 @@ void transaction::transactionSlot(QString account, QByteArray token)
 void transaction::showTransactionSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-
-    QJsonArray tArray = QJsonDocument::fromJson(response_data).array();
+    tArray = QJsonDocument::fromJson(response_data).array();
 
     QStandardItemModel *table_model = new QStandardItemModel(tList.size(),4);
     table_model->setHeaderData(0,Qt::Horizontal,QObject::tr("Korttinumero"));
@@ -44,23 +43,25 @@ void transaction::showTransactionSlot(QNetworkReply *reply)
     table_model->setHeaderData(2,Qt::Horizontal,QObject::tr("Määrä"));
     table_model->setHeaderData(3,Qt::Horizontal,QObject::tr("Aika"));
 
-    for (int row = 0; row < tArray.size(); ++row) {
-            QJsonObject jsObj=tArray.at(row).toObject();
-            cnum = jsObj["cardnumber"].toString();
-            timestamp = jsObj["time"].toString();
-            amount = jsObj["transactionamount"].toString();
-            ttype = jsObj["transactiontype"].toString();
+    for (int row=0;row < tArray.size(); ++row) {
+        QJsonObject jsObj=tArray.at(row).toObject();
+        cnum = jsObj["cardnumber"].toString();
+        timestamp = jsObj["time"].toString();
+        amount = jsObj["transactionamount"].toString();
+        ttype = jsObj["transactiontype"].toString();
 
-            QStandardItem *cardnumitem = new QStandardItem(cnum);
-            table_model->setItem(row, 0, cardnumitem);
-            QStandardItem *timestampitem = new QStandardItem(timestamp);
-            table_model->setItem(row, 3, timestampitem);
-            QStandardItem *amountitem = new QStandardItem(amount);
-            table_model->setItem(row, 2, amountitem);
-            QStandardItem *typeitem = new QStandardItem(ttype);
-            table_model->setItem(row, 1, typeitem);
-        }
-
+        QStandardItem *cardnumitem = new QStandardItem(cnum);
+        table_model->setItem(row, 0, cardnumitem);
+        QStandardItem *timestampitem = new QStandardItem(timestamp);
+        table_model->setItem(row, 3, timestampitem);
+        QStandardItem *amountitem = new QStandardItem(amount);
+        table_model->setItem(row, 2, amountitem);
+        QStandardItem *typeitem = new QStandardItem(ttype);
+        table_model->setItem(row, 1, typeitem);
+    }
     ui->table_model->setModel(table_model);
 }
+
+
+
 

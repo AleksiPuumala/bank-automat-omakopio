@@ -25,6 +25,7 @@ private slots:
     void transactionSlot(QString, QByteArray);
     void showTransactionSlot(QNetworkReply*);
 
+
 private:
     Ui::transaction *ui;
     QNetworkReply *reply;
@@ -32,6 +33,9 @@ private:
     QNetworkAccessManager *transactionManager;
     QString cnum, timestamp, amount, ttype;
     QList<QString> tList {cnum, timestamp, amount, ttype};
+    QJsonArray tArray;
+
+
 signals:
     void transactionLogoutSignal();
 };
