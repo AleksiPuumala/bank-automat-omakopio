@@ -19,7 +19,7 @@ router.get('/:idtransaction', function(request, response) {
             response.send(err);
         } else {
             console.log(result);
-            response.json(result[0]);
+            response.json(result);
         }
     });
 });

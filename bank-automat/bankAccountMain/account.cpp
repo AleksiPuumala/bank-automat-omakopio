@@ -37,6 +37,9 @@ void account::on_btnNosto_clicked()
     connect(this, SIGNAL(withdrawSignal(QString,QString,QByteArray)),
             ptr_withdraw, SLOT(withdrawDataSlot(QString,QString,QByteArray)));
     emit withdrawSignal(idaccount,cardnumber,token);
+
+    connect(ptr_withdraw, SIGNAL(accountlogoutSignal()),
+                                 this, SLOT(logoutSlot()));
     ptr_withdraw->open();
 }
 
@@ -61,6 +64,13 @@ void account::on_btnUlos_clicked()
 void account::on_btnTapahtumat_clicked()
 {
     transaction *ptr_transaction=new transaction(this);
+
+    connect(this, SIGNAL(transactionInSignal(QString,QByteArray)),
+            ptr_transaction, SLOT(transactionSlot(QString,QByteArray)));
+    emit transactionInSignal(idaccount,token);
+
+   // connect(ptr_transaction, SIGNAL(transactionLogoutSignal()),
+     //       this, SLOT(logoutSlot()));
     ptr_transaction->open();
 }
 
@@ -149,6 +159,7 @@ void account::on_btnTilivalinta2_clicked()
 
 void account::logoutSlot()
 {
+    emit logoutSignal();
     account::close();
 }
 

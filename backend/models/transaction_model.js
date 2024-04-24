@@ -10,8 +10,8 @@ const transaction={
     updateTransaction(idtransaction, updatedTransaction, callback){
         return db.query("UPDATE transaction SET time=?, transactionamount=?, transactiontype=?, cardnumber=? WHERE idtransaction=?", [updatedTransaction.time, updatedTransaction.transactionamount, updatedTransaction.transactiontype, updatedTransaction.cardnumber, idtransaction], callback);
     },
-    getOneTransaction(idtransaction, callback) {
-        return db.query("SELECT * FROM transaction WHERE idtransaction=?", idtransaction, callback);
+    getOneTransaction(id, callback) {
+        return db.query("SELECT * FROM transaction WHERE idaccount=?", id, callback);
     },
     deleteTransaction(idtransaction, callback) {
         return db.query("DELETE FROM transaction WHERE idtransaction=?", idtransaction, callback);

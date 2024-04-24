@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    serialPort->setPortName("COM7"); // TÄHÄN USB-PORTIN KANAVA
+    serialPort->setPortName("COM5"); // TÄHÄN USB-PORTIN KANAVA
     serialPort->setBaudRate(QSerialPort::Baud9600); // Siirtonopeus
 
     // Kun sarjaporttiin tulee uutta dataa, kutsu readSerialData

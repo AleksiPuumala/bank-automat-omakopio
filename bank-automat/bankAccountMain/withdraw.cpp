@@ -211,6 +211,7 @@ void withdraw::withdrawSlot(QNetworkReply *reply)
 
 void withdraw::logoutSlot()
 {
+    emit accountlogoutSignal();
     ptr_takemoney->close();
 }
 
