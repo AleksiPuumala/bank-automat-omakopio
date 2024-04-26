@@ -2,6 +2,8 @@
 #define TAKEMONEY_H
 
 #include <QDialog>
+#include <QtNetwork>
+#include <QNetworkAccessManager>
 
 
 namespace Ui {
@@ -18,9 +20,13 @@ public:
 
 private:
     Ui::takemoney *ui;
+    QNetworkAccessManager *imageManager;
+    QByteArray response_data;
 
 private slots:
     void logoutSlot();
+
+    void imageSlot(QNetworkReply *reply);
 
 signals:
     void logoutSignal();

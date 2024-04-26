@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include "account.h"
 
+#include <QPixmap>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
@@ -24,9 +26,14 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     serialData = "";
     ui->infoTeksti->setReadOnly(true);
+
+    // Kuva
+    picManager = new QNetworkAccessManager(this);
+    connect(picManager, SIGNAL(finished(QNetworkReply*)), this, SLOT(pictureSlot(QNetworkReply*)));
+    QUrl url("http://localhost:3000/image/aku.jpeg");
+    QNetworkRequest request(url);
+    picManager->get(request);
 }
-
-
 
 MainWindow::~MainWindow()
 {
@@ -98,6 +105,19 @@ void MainWindow::on_ohita_clicked()
 {
     ptr_account = new account(this);
     ptr_account->show();
+}
+
+void MainWindow::pictureSlot(QNetworkReply *reply)
+{
+    if(reply->error() != QNetworkReply::NoError){
+        qDebug()<<"Error in"<<reply->url()<<":"<<reply->errorString();
+        return;
+    }else{
+        QByteArray jpegData = reply->readAll();
+        QPixmap pixmap;
+        pixmap.loadFromData(jpegData);
+        ui->labelPic->setPixmap(pixmap);
+    }
 }
 
 
