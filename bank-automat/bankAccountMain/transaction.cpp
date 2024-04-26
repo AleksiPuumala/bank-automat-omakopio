@@ -46,7 +46,7 @@ void transaction::showTransactionSlot(QNetworkReply *reply)
 
 
     for (int row=0;row < tArray.size(); ++row) {
-        qDebug()<<row;
+
         QJsonObject jsObj=tArray.at(row).toObject();
         cnum = jsObj["cardnumber"].toString();
         timestamp = jsObj["time"].toString();
@@ -103,7 +103,7 @@ void transaction::nextTable()
 
 void transaction::backTable()
 {
-    qDebug()<<rowStart+rowEnd;
+
     for(int row=0;row<tArray.size();row++){
         ui->tableview->hideRow(row);
     }

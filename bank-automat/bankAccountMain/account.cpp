@@ -67,8 +67,6 @@ void account::on_btnTapahtumat_clicked()
             ptr_transaction, SLOT(transactionSlot(QString,QByteArray)));
     emit transactionInSignal(idaccount,token);
 
-   // connect(ptr_transaction, SIGNAL(transactionLogoutSignal()),
-     //       this, SLOT(logoutSlot()));
     ptr_transaction->open();
 }
 
@@ -76,7 +74,6 @@ void account::on_btnTapahtumat_clicked()
 void account::accountSlot(QNetworkReply* reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
     json_doc = QJsonDocument::fromJson(response_data);
     QJsonArray json_array = json_doc.array();
     if(json_array.size()>1){

@@ -62,18 +62,18 @@ void bankPinUi::loginSlot(QNetworkReply *reply)
     response_data=reply->readAll();
     QMessageBox msgBox;
     if (response_data==""){
-        qDebug()<<"Palvelin ei vastaa";
+    emit logoutPinSignal();
         msgBox.setText("Palvelin ei vastaa");
         msgBox.exec();
         bankPinUi::close();
     } else
     if(response_data=="-4078"){
+        emit logoutPinSignal();
         msgBox.setText("Tietokantavirhe");
         msgBox.exec();
         bankPinUi::close();
     }
      else if(response_data!="false" && response_data!=""){
-            qDebug()<<"kirjautuminen ok";
 
             emit loginSignal(response_data);
 
@@ -91,6 +91,7 @@ void bankPinUi::loginSlot(QNetworkReply *reply)
             loginNum=loginNum-1;
 
             if(loginNum==0){ //kirjautumis yritykset = 0
+                emit logoutPinSignal();
                 msgBox.setText("Yritykset loppu");
                 msgBox.exec();
                 bankPinUi::close();

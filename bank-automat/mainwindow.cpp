@@ -67,7 +67,6 @@ void MainWindow::readSerialData()
 void MainWindow::loginSlot(QByteArray response_data) // Lähetä kortin numero ja webtoken
 {
     ptr_pinui->close();
-    qDebug()<<"mainwindow slot ok";
 
     ptr_account = new account(this);
     cardnumber = serialData.remove(0, 3), serialData.remove(10, 3);
@@ -101,11 +100,7 @@ void MainWindow::logoutSlot()
     serialData = nullptr;
 }
 
-void MainWindow::on_ohita_clicked()
-{
-    ptr_account = new account(this);
-    ptr_account->show();
-}
+
 
 void MainWindow::pictureSlot(QNetworkReply *reply)
 {
