@@ -63,13 +63,13 @@ void bankPinUi::loginSlot(QNetworkReply *reply)
     QMessageBox msgBox;
     if (response_data==""){
     emit logoutPinSignal();
-        msgBox.setText("Palvelin ei vastaa");
+        msgBox.setText("Tietokantavirhe");
         msgBox.exec();
         bankPinUi::close();
     } else
     if(response_data=="-4078"){
         emit logoutPinSignal();
-        msgBox.setText("Tietokantavirhe");
+        msgBox.setText("Palvelin ei vastaa");
         msgBox.exec();
         bankPinUi::close();
     }
