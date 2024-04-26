@@ -8,6 +8,7 @@
 #include <QJsonDocument>
 #include "bankpinui.h"
 #include "account.h"
+#include <QLabel>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -23,6 +24,13 @@ public:
 
 private slots:
     void readSerialData();
+    void loginSlot(QByteArray);
+    void logoutSlot();
+
+    void on_ohita_clicked();
+
+    void pictureSlot(QNetworkReply *reply);
+
 
 private:
     Ui::MainWindow *ui;
@@ -37,11 +45,8 @@ private:
     QNetworkAccessManager *cardManager;
     QNetworkReply *reply;
 
-private slots:
-    void loginSlot(QByteArray);
-    void logoutSlot();
-
-    void on_ohita_clicked();
+    QNetworkAccessManager *picManager;
+    QByteArray response_data;
 
 signals:
     void pinSignal(QString);

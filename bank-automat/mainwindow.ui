@@ -17,8 +17,8 @@
    <widget class="QLineEdit" name="infoTeksti">
     <property name="geometry">
      <rect>
-      <x>200</x>
-      <y>180</y>
+      <x>190</x>
+      <y>60</y>
       <width>401</width>
       <height>131</height>
      </rect>
@@ -30,6 +30,22 @@
     </property>
     <property name="text">
      <string>Syötä kortti</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="labelPic">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>220</y>
+      <width>341</width>
+      <height>221</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
