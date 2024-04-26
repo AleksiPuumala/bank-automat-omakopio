@@ -78,8 +78,8 @@ void bankPinUi::loginSlot(QNetworkReply *reply)
     }
      else if(response_data!="false" && response_data!=""){
             qDebug()<<"kirjautuminen ok";
-            msgBox.setText("Kirjautuminen OK");
-            msgBox.exec();
+            // msgBox.setText("Kirjautuminen OK");
+            // msgBox.exec();
 
 
             emit loginSignal(response_data);
