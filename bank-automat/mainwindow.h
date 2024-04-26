@@ -27,8 +27,6 @@ private slots:
     void loginSlot(QByteArray);
     void logoutSlot();
 
-    void on_ohita_clicked();
-
     void pictureSlot(QNetworkReply *reply);
 
 

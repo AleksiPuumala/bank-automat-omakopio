@@ -51,6 +51,8 @@ private:
     QByteArray token;
 
     takemoney * ptr_takemoney;
+signals:
+    void accountlogoutSignal();
 };
 
 #endif // WITHDRAW_H

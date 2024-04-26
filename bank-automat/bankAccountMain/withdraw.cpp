@@ -183,12 +183,10 @@ void withdraw::on_btnExitWithdraw_clicked()
 void withdraw::withdrawSlot(QNetworkReply *reply)
 {
     response_data=reply->readAll();
-    qDebug()<<response_data;
+
     QJsonDocument json_doc = QJsonDocument::fromJson(response_data);
-    qDebug()<<json_doc;
 
     QString strJson(json_doc.toJson(QJsonDocument::Compact));
-    qDebug()<<strJson;
 
     QMessageBox box;
     if(strJson=="[{\"Luottoraja ylitetty\":\"Luottoraja ylitetty\"}]"){
@@ -211,6 +209,7 @@ void withdraw::withdrawSlot(QNetworkReply *reply)
 
 void withdraw::logoutSlot()
 {
+    emit accountlogoutSignal();
     ptr_takemoney->close();
 }
 
